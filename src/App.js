@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Hero from './components/Hero/Hero';
 
 function App() {
   return (
     <div className="App">
-     <h1>rebusuje</h1>
+      <Hero />
     </div>
   );
 }
