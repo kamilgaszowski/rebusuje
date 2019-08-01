@@ -11,10 +11,7 @@ const Hero = () => (
             src='https://i.postimg.cc/BbSkQnQ6/rebusuje-logo.png'  
             alt='rebusuje logo'
         />
-        <div className={styles.signature}>
-        <img  src='https://i.postimg.cc/R0CgHDxs/j-mis.jpg' alt='jarosław miś' />
-
-        </div>
+       
         </div>
        
        <Button>zagraj</Button>

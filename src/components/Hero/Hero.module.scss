@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap&subset=latin-ext');
+
 .wrapper {
     
     height: 100vh;
@@ -20,19 +22,22 @@
         max-width: 100%;
     }
 
-    .signature {
+    &::after {
         position: absolute;
-        width: 80px;
-        height: auto;
+        display: block;
+        content: 'wyk. JMiś';
+        font-family: 'Sacramento', cursive;
+        text-align: center;
+        font-size: 2rem;
+        color: #000;
+        background: #fff;
         bottom: -20px;
         right: 15px;
-        display: flex;
-        justify-content: flex-end;
-        img {
-           width: 100%;
-        }
-        
+        width: auto;
+        height: auto;
+ 
     }
+
    }
 
    button {
