@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import styles from './App.scss';
 import Hero from './components/Hero/Hero';
+
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.wrapper}>
       <Hero />
     </div>
   );

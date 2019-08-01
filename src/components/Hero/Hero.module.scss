@@ -1,24 +1,43 @@
 .wrapper {
-    margin: 0 auto;
-   background-color: #fff;
-   background-size: contain;
-   background-repeat: no-repeat;
+    
+    height: 100vh;
+   background: #fff;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
 
    .logo {
-    height: 60vh;
-    width: auto;
+    position: relative;
+    max-width: 50vw;
+    height: auto;
     margin: 0 auto;
-    padding: 50px;
+    padding: 20px;
     border: 2px solid #000;
+
+   
+    .image {
+        max-width: 100%;
+    }
+
+    .signature {
+        position: absolute;
+        width: 80px;
+        height: auto;
+        bottom: -20px;
+        right: 15px;
+        display: flex;
+        justify-content: flex-end;
+        img {
+           width: 100%;
+        }
+        
+    }
    }
 
    button {
        margin: 20px;
-       
+
    }
   
 }
