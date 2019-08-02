@@ -1,12 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
 
-const Button = ({children}) => (
 
-    <button className={styles.button}>
+
+
+const Button = ({children, ...props}) => (
+
+    <Link to={props.to} className={styles.button}>
         {children}
-    </button>
+    </Link >
 );
 
 export default Button;

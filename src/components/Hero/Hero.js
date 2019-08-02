@@ -10,7 +10,7 @@ const Hero = () => (
 				    <img src='https://i.postimg.cc/prPwWhN9/rebusuje-logo-sign.png' alt='' />
 			    </div>
 		    </div>	
-            <Button>zagraj</Button>
+            <Button to='/gallery/:id'>zagraj</Button>
         </header>
        
     </>
