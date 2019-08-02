@@ -6,6 +6,7 @@ import Menu from './components/Menu/Menu';
 
 import GalleryView from './views/GalleryView/GalleryView';
 import ContactView from './views/ContactView/ContactView'
+import GameView from './views/GameView/GameView';
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
     <Switch> 
     <Route exact path='/' component={Hero}/>
     <Route exact path='/gallery' component={GalleryView} />
-    <Route path='/contact' component={ContactView} />
+    <Route exact path='/contact' component={ContactView} />
+    <Route path='/gallery/:id' component={GameView} />
     </Switch>
     </div>
     </BrowserRouter>
