@@ -1,0 +1,19 @@
+.menu {
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: space-between;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.navItem {
+    list-style: none;
+    max-width: 50px;
+     img {
+         width: 50px;
+     }
+}

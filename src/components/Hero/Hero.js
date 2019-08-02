@@ -4,19 +4,18 @@ import Button from '../Button/Button';
 
 const Hero = () => (
     <>
-    <div className={styles.wrapper}>
-        <div className={styles.logo}>
-        <img 
-            className={styles.image}
-            src='https://i.postimg.cc/BbSkQnQ6/rebusuje-logo.png'  
-            alt='rebusuje logo'
-        />
+        <header className={styles.wrapper}>
+		    <div className={styles.border}>
+			    <div className={styles.logo}>
+				    <img src='https://i.postimg.cc/prPwWhN9/rebusuje-logo-sign.png' alt='' />
+			    </div>
+		    </div>	
+            <Button>zagraj</Button>
+        </header>
        
-        </div>
-       
-       <Button>zagraj</Button>
-    </div>
     </>
+
+    
 );
 
 export default Hero;
