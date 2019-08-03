@@ -4,27 +4,44 @@ import styles from './App.scss';
 import Hero from './components/Hero/Hero';
 import Menu from './components/Menu/Menu';
 
+
+
 import GalleryView from './views/GalleryView/GalleryView';
 import ContactView from './views/ContactView/ContactView'
-import GameView from './views/GameView/GameView';
+
+import ImagesModal from './components/Images/Images';
+import { rebuses } from './data/rebuses';
 
 
-function App() {
-  return (
-    <BrowserRouter>
-    <div className={styles.wrapper}>
-    <Menu />
-    <Switch> 
-    <Route exact path='/' component={Hero}/>
-    <Route exact path='/gallery' component={GalleryView} />
-    <Route exact path='/contact' component={ContactView} />
-    <Route path='/gallery/:id' component={GameView} />
-    </Switch>
-    </div>
-    </BrowserRouter>
-  
+
+
+class App extends React.Component {
+  state = {
+    items: [...rebuses],
+  };
+
+  render(){
+  const {items} = this.state;
+    return (
+      <BrowserRouter>
+      <div className={styles.wrapper}>
+      <Menu />
+      <Switch> 
+      <Route exact path='/' component={Hero}/>
+      <Route exact path='/gallery' component={GalleryView} />
+      <Route exact path='/contact' component={ContactView} />
+      <Route exact path='/gallery/:id' component={ImagesModal} {...items} />
+      
+      </Switch>
+      </div>
+      
+     
+      </BrowserRouter>
     
-  );
+      
+    );
+  }
+  
 }
 
 export default App;
