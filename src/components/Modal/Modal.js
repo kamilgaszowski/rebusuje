@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Modal = () => (
-    <p>wygrałeś</p>
+    <p>Wygrałeś</p>
 );
 
 export default Modal;

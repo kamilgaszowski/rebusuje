@@ -9,8 +9,9 @@ import Menu from './components/Menu/Menu';
 import GalleryView from './views/GalleryView/GalleryView';
 import ContactView from './views/ContactView/ContactView'
 
-import ImagesModal from './components/Images/Images';
+import ImagesModal from './components/ImagesModal/ImagesModal';
 import { rebuses } from './data/rebuses';
+import Modal from '../src/components/Modal/Modal';
 
 
 
@@ -31,8 +32,9 @@ class App extends React.Component {
       <Route exact path='/gallery' component={GalleryView} />
       <Route exact path='/contact' component={ContactView} />
       <Route exact path='/gallery/:id' component={ImagesModal} {...items} />
-      
+      <Route path='/modal' component={Modal} />
       </Switch>
+      
       </div>
       
      
