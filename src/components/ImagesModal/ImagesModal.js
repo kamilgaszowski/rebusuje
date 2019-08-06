@@ -3,19 +3,15 @@
 import React from 'react';
 import AppContext from '../../contex';
 import styles from'./ImagesModal.module.scss';
-import Modal from '../Modal/Modal';
-
-
-
-
-
-
 
 class ImagesModal extends React.Component {
     state = {
         items: this.props,
         isModalOpen: false,
+        value: ' ',
     }
+
+   
 
     openModal = () => {
         this.setState({
@@ -29,10 +25,21 @@ class ImagesModal extends React.Component {
         });
     };
 
-    checkAnswer = (e)=> {
+    handleChange = (e)=> {
         e.preventDefault();
-        e.target.value === this.state.items.name ?  this.openModal() : this.closeModal();  
+        this.setState({
+            value: e.target.value
+        }) 
     }
+
+    handleSubmit = (e)=> {
+        e.preventDefault();
+        this.state.value === this.state.items.name ?  this.openModal() : this.closeModal();  
+    }
+
+    handleChange = this.handleChange.bind(this);
+    handleSubmit = this.handleSubmit.bind(this);
+
 
     render(){
         
@@ -50,8 +57,9 @@ class ImagesModal extends React.Component {
                                     <img src={items.src} alt={items.id}/>
                                 </div>
                             </div> 
-                            <form className={styles.form} onSubmit={this.checkAnswer} >
-                                 <input className={styles.reply} placeholder ='Wpisz wynik' onChange={this.checkAnswer} required/>   
+                            <form className={styles.form} onSubmit={this.handleSubmit} >
+                                 <input className={styles.reply} placeholder ='Wpisz wynik'  onChange={this.handleChange.bind(this)} onFocus={true} required/>   
+                                 <input type="submit" value="Sprawdź" />
                             </form> 
                            
                         </div>
