@@ -11,6 +11,12 @@
     align-items: center;
     flex-wrap: wrap;
     z-index: 2;
+
+    .rightAnswer{
+        color: red;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
 }
 
 
