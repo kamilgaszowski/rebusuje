@@ -41,19 +41,18 @@ class ImagesModal extends React.Component {
                 <AppContext.Consumer>
                     {context=>(
                          <div className={styles.wrapper}>
-                        <button onClick={() => context.closeModal()}>Zamknij</button>
-                         <p>{items.id}</p>
-                         <div className={styles.border}>
-                             <div className={styles.rebus}>
-                                 <img src={items.src} alt={items.id}/>
-                             </div>
-                         </div> 
-                         <form className={styles.form} onSubmit={this.checkAnswer} >
-                                 <input className={styles.reply} placeholder ='Wpisz wynik' onChange={this.checkAnswer} required/>
-                                 
-                             </form> 
-                             {isModalOpen && <Modal />}
-                     </div>
+                            <button onClick={() => context.closeModal()}>Zamknij</button>
+                            <p>{items.id}</p>
+                            <div className={styles.border}>
+                               
+                                    <img src={items.src} alt={items.id}/>
+                                
+                            </div> 
+                            <form className={styles.form} onSubmit={this.checkAnswer} >
+                                 <input className={styles.reply} placeholder ='Wpisz wynik' onChange={this.checkAnswer} required/>   
+                            </form> 
+                            {isModalOpen && <Modal />}
+                        </div>
                     )}
                 
                 </AppContext.Consumer>

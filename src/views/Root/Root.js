@@ -24,10 +24,11 @@ class Root extends React.Component {
       <>
       <BrowserRouter>
         <AppContext.Provider value={this.state.items}>
+        <Route exact path='/gallery' component={GalleryView}/>
         <Menu />
             <Switch> 
               <Route exact path='/' component={Hero}/>
-              <Route exact path='/gallery' component={GalleryView}/>
+              
               <Route exact path='/contact' component={ContactView} /> 
             </Switch>
           
