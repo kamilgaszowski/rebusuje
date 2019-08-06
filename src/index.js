@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './index.scss';
-import App from './App';
+import Root from './views/Root/Root';
 
 
-ReactDOM.render(<App className={styles.app}/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));

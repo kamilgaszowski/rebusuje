@@ -1,43 +1,47 @@
 .wrapper {
-	position: relative;
-	height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+
 }
+
+
 
 .border {
     display: flex;
     margin: 0 auto;
+    width: 50vw;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background: none;
     box-shadow: 0px 0px 100px -5px rgba(0,0,0,0.1);
     border-radius: 10px;
-	max-width: 70vw;
-	max-height: 70vh;
+	
 	
 }
 
 .rebus {
     padding: 5vw;
+    display: flex;
+    align-items: center;
 
     img {
-      max-width: 55vw;
+      width: 100%;
       height: auto;
     }
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 .reply {
     margin: 0 auto;
     width: 50vw;
@@ -55,8 +59,5 @@
    
 }
 
-.rightAnswer {
-    color: green;
-}
 
 

@@ -1,7 +1,8 @@
 .menu {
     position: fixed;
+    margin: 0;
     bottom: 10px;
-    left: 0;
+    left: -80px;
     display: flex;
     height: 90vh;
     justify-content: space-between;
@@ -9,25 +10,45 @@
     flex-direction: column;
     flex-wrap: nowrap;
     z-index: 1;
-}
 
-.navItem {
-    list-style: none;
-    max-width: 50px;
-    margin: 0 0 30px;
-
-
-     img {
-         width: 30px;
-     }
-}
-
-.navItemLogo {
-    //visibility: hidden;
-    list-style: none;
-    max-width: 50px;
-  
-    img {
-        width: 200px;
+    &Logo {
+        //visibility: hidden;
+        list-style: none;
+        max-width: 50px;
+      
+        img {
+            width: 200px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+        }
     }
 }
+
+.nav {
+    display: flex;
+    
+
+    &Item {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        border: none;
+
+        
+        
+    
+         img {
+             margin: 0 auto;
+             width: 35px; 
+         }
+    }
+}
+
+
