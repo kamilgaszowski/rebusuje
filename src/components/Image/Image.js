@@ -1,60 +1,50 @@
 import React from 'react';
-
-
 import  styles  from './Image.module.scss';
-import AppContext from '../../contex';
 import ImagesModal from '../ImagesModal/ImagesModal';
+import AppContext from '../../contex';
 
 
 class Image extends React.Component {
     state = {
+        items: this.props,
         isModalOpen: false,
+        currentIndex: 0,
     }
 
     openModal = () => {
+        
         this.setState({
             isModalOpen: true,
         });
     }
 
     closeModal = () => {
-        this.setState({
+        this.setState({ 
             isModalOpen: false,
         });
     }
-    
-    
+   
 
+    
     render (){
-      const {isModalOpen} = this.state;
+      const {isModalOpen, items} = this.state;
+      const contextElement = {
+          closeModal: this.closeModal,
+      }
         return(
             
-           <>
-                 <AppContext.Consumer>
-                    {context => (  
-                        <>
-                         {isModalOpen && <ImagesModal closeModalFn={this.closeModal}{...context}/>}
-                    <div className={styles.wrapper}>
-                    <h2 className={context.title}>{context.id}</h2>
+           <AppContext.Provider value={contextElement}>
+               {isModalOpen && <ImagesModal {...items}/>}
+                <div className={styles.wrapper}>
+                    <h2 className={items.title}>{items.id}</h2>
                     <div className={styles.image}>
-                        <div onClick={this.openModal}>
-                            <img src={context.src}  alt={context.id}/>
+                        <div 
+                            onClick={this.openModal}>
+                                <img src={items.src}  alt={items.id}/>
                         </div >
-                        
-                       
                     </div>     
                 </div>
-               
-             </>
-            )}  
-             
-        </AppContext.Consumer>
-          
-         
-           </>
-           
-        
-        
+           </AppContext.Provider>
         )
     }
 } ;

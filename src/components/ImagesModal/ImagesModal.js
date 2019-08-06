@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-lone-blocks */
 import React from 'react';
+import AppContext from '../../contex';
 import styles from'./ImagesModal.module.scss';
 import Modal from '../Modal/Modal';
+
 
 
 
@@ -27,21 +29,19 @@ class ImagesModal extends React.Component {
         });
     };
 
-    
-
     checkAnswer = (e)=> {
         e.preventDefault();
-        e.target.value === this.state.items.name ?  this.openModal() : this.closeModal();
-       
+        e.target.value === this.state.items.name ?  this.openModal() : this.closeModal();  
     }
 
     render(){
         
         const {items, isModalOpen} = this.state;
         return (
-           
-                 <div className={styles.wrapper}>
-                        
+                <AppContext.Consumer>
+                    {context=>(
+                         <div className={styles.wrapper}>
+                        <button onClick={() => context.closeModal()}>Zamknij</button>
                          <p>{items.id}</p>
                          <div className={styles.border}>
                              <div className={styles.rebus}>
@@ -54,7 +54,9 @@ class ImagesModal extends React.Component {
                              </form> 
                              {isModalOpen && <Modal />}
                      </div>
-          
+                    )}
+                
+                </AppContext.Consumer>
              );   
     }
 

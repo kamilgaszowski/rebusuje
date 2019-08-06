@@ -19,20 +19,20 @@ class Root extends React.Component {
   };
 
   render(){
-    const {items} = this.state;
+    
     return (
       <>
       <BrowserRouter>
         <AppContext.Provider value={this.state.items}>
-          <Menu />
+        <Menu />
             <Switch> 
               <Route exact path='/' component={Hero}/>
-              <Route exact path='/gallery' component={GalleryView} {...items} />
-              <Route exact path='/contact' component={ContactView} />
-              
+              <Route exact path='/gallery' component={GalleryView}/>
+              <Route exact path='/contact' component={ContactView} /> 
             </Switch>
-            </AppContext.Provider>
           
+            </AppContext.Provider>
+         
            
             
             
