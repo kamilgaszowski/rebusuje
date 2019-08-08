@@ -27,19 +27,13 @@
         display: flex;
         width: 50vw;
         margin: 0 0 20px 0;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
         align-content: center;
         color: #000;
+        text-align: center;
         text-transform: uppercase;
         font-size: 20px;
-
-        :first-child{
-            color: red;
-        }
-
-        :nth-child(3){
-            color: rgb(4, 221, 4);
-        }
         
     }
 
@@ -157,7 +151,7 @@
     margin: 10px 0;
     display: flex;
     width: 50vw;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -165,8 +159,8 @@
 
 
 .input {
-    margin: 20px 0 0 0;
-    width: 50vw;
+    margin: 20px 5px;
+    width: 5vw;
     height: 40px;
     padding: 10px;
     border: none;

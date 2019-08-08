@@ -9,10 +9,11 @@ class ImagesModal extends React.Component {
     state = {
         items: this.props,
         isModalOpen: false,
-        value: ' ',
+        isAnswerOpen: false,
+        value: '',
+        input: this.props.name.split(""),
     }
 
-    inputRef = React.createRef()
 
     openModal = () => {
         this.setState(prevState => ({
@@ -20,29 +21,21 @@ class ImagesModal extends React.Component {
         }));
     };
 
-    closeModal = () => {
-        this.setState({
-            isModalOpen: false,
-        });
-    };
 
     handleChange = (e)=> {
         this.setState({
-            isModalOpen: false,
-        });
-        this.setState({
-            value: e.target.value
-        });
-       
+            value: this.state.value + e.target.value,
+
+        }); 
+        this.state.value === this.state.items.name ? this.setState({isAnswerOpen: true}) : null; 
+        
     }
 
-    handleSubmit = (e)=> {
+    handleSubmit = (e) => {
         e.preventDefault();
-       
-       
+        this.state.value === this.state.items.name ? this.setState({isAnswerOpen: true}) : null; 
     }
-
-    
+  
 putInputs = () => {
         let letterAmount = [];
         for(let i = 0; i < this.state.items.name.length; i++){
@@ -57,13 +50,10 @@ putInputs = () => {
 
     render(){
         
-        const {items, isModalOpen, value} = this.state;
-        let input = [];
-        input = items.name.split("");
+        const {items, isAnswerOpen,  input} = this.state;
        
         return (
             <>
-          
                 <AppContext.Consumer>
                     {context=>(
                         <div className={styles.container}>
@@ -71,41 +61,44 @@ putInputs = () => {
                             
                            
                             <div className={styles.rightAnswer}>
-                                <p>{value === items.name ?'Brawo!  ' : null}</p>
-                                <p>Prawidłowa odpowiedź to:</p>
-                                <p>{value === items.name ? value  : null}</p>
+                                <h2>{isAnswerOpen && 'Brawo! '}</h2>
+                                <p>{isAnswerOpen && `Właściwa odpowiedź to: ${items.name}`}</p>
                             </div>
-                          
                             <div className={styles.border}>
-                           
                                 <div className={styles.rebus}>
-                                <button 
-                                onClick={() => context.closeModal()}
-                                className={styles.exitBtn}
-                                >
-                                    X
-                            </button>
-                                <p className={styles.title}>{items.id}</p>
-                                    <img src={items.src} alt={items.id}/>
-                                    <div className={styles.prompt}>{isModalOpen && `Rozwiązanie ma ${input.length} liter`}</div>
-                                    <button type='button' onClick={this.openModal}>?</button>
+                                    <button 
+                                    onClick={() => context.closeModal()}
+                                    className={styles.exitBtn}
+                                    >
+                                        X
+                                    </button>
+                                    <p className={styles.title}>{items.id}</p>
+                                    <img src={items.src} alt={items.id}/>  
                                 </div>
                             </div> 
                             
-                            <form className={styles.form}>
-                                <input 
-                                    className={styles.input}
-                                     onChange={this.handleChange}
-                                     maxLength={items.name.length}
-                                     placeholder='Wpisz swoje rozwiązanie:'
-                                     required />  
+                            <form 
+                                className={styles.form} 
+                                onSubmit={this.handleSubmit}
+                                >
+                                     {input.map((item, index) => (
+                                         <input 
+                                            className={styles.input} 
+                                            key={index}
+                                            maxLength='1'
+                                            placeholder={index + 1}
+                                            required
+                                            onChange={this.handleChange}
+                                        />
+                                     ))}
+                                      <button onClick={this.handleSubmit} type='button'>sprawdź</button> 
                                 
                             </form> 
                            
+                           
                         </div>
-                        </div>
-                         
-                    )}
+                    </div>  
+                )}
                 
                 </AppContext.Consumer>
                 </>
