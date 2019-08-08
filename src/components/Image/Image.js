@@ -25,7 +25,6 @@ class Image extends React.Component {
     }
    
 
-    
     render (){
       const {isModalOpen, items} = this.state;
       const contextElement = {

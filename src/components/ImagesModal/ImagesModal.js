@@ -4,6 +4,7 @@ import React from 'react';
 import AppContext from '../../contex';
 import styles from'./ImagesModal.module.scss';
 
+
 class ImagesModal extends React.Component {
     state = {
         items: this.props,
@@ -11,12 +12,12 @@ class ImagesModal extends React.Component {
         value: ' ',
     }
 
-   
+    inputRef = React.createRef()
 
     openModal = () => {
-        this.setState({
-            isModalOpen: true,
-        });
+        this.setState(prevState => ({
+            isModalOpen: !prevState.isModalOpen
+        }));
     };
 
     closeModal = () => {
@@ -26,46 +27,77 @@ class ImagesModal extends React.Component {
     };
 
     handleChange = (e)=> {
-        e.preventDefault();
+       
         this.setState({
             value: e.target.value
-        }) 
+        });
+        
     }
 
     handleSubmit = (e)=> {
         e.preventDefault();
-        this.state.value === this.state.items.name ?  this.openModal() : this.closeModal();  
+       
+       
     }
 
-    handleChange = this.handleChange.bind(this);
-    handleSubmit = this.handleSubmit.bind(this);
+    
+putInputs = () => {
+        let letterAmount = [];
+        for(let i = 0; i < this.state.items.name.length; i++){
+            letterAmount.push(i);            
+        }
+
+        this.setState({
+            prompt: letterAmount
+        }); 
+    }
 
 
     render(){
         
-        const {items, isModalOpen} = this.state;
+        const {items, isModalOpen, value} = this.state;
+
+        let input = [];
+        input = items.name.split("");
+        
+       
+       
         return (
+            <>
+          
                 <AppContext.Consumer>
                     {context=>(
                          <div className={styles.wrapper}>
-                            <button onClick={() => context.closeModal()}>Zamknij</button>
-                            <p>{isModalOpen  && 'Brawo! Prawidłowa odpowiedź to: '}</p>
-                            <p className={styles.rightAnswer}>{isModalOpen  && items.name}</p>
+                            <button 
+                                onClick={() => context.closeModal()}
+                                className={styles.button}
+                                >
+                                    X
+                            </button>
+                            <p>{value === items.name ?'Brawo! Prawidłowa odpowiedź to: ' : null}</p>
+                            <p className={styles.rightAnswer}>{value === items.name ? value : null}</p>
                             <p>{items.id}</p>
                             <div className={styles.border}>
                                 <div className={styles.rebus}>
                                     <img src={items.src} alt={items.id}/>
+                                    <button type='button' onClick={this.openModal}>?</button>
                                 </div>
                             </div> 
-                            <form className={styles.form} onSubmit={this.handleSubmit} >
-                                 <input className={styles.reply} placeholder ='Wpisz wynik'  onChange={this.handleChange.bind(this)} onFocus={true} required/>   
-                                 <input type="submit" value="Sprawdź" />
+                            
+                            <form className={styles.form}  >
+                                <label>Wpisz swoje rozwiązanie:</label>
+                                <input 
+                                    className={styles.input}
+                                     onChange={this.handleChange}
+                                     maxLength={items.name.length} />  
+                                 <p>{isModalOpen && `rozwiązanie ma ${input.length} liter`}</p>
                             </form> 
                            
                         </div>
                     )}
                 
                 </AppContext.Consumer>
+                </>
              );   
     }
 

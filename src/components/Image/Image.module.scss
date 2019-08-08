@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: space-between;
+    overflow: scroll;
 
     .title {
         margin: 30px 0 10px 10px;

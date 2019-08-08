@@ -32,6 +32,7 @@ class Root extends React.Component {
               <Route exact path='/contact' component={ContactView} /> 
             </Switch>
           
+          
             </AppContext.Provider>
          
            
