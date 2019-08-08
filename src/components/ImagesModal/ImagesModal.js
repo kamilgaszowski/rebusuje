@@ -73,12 +73,12 @@ putInputs = () => {
                                     X
                             </button>
                             <p>{value === items.name ?'Brawo! Prawidłowa odpowiedź to: ' : null}</p>
-                            <p className={styles.rightAnswer}>{value === items.name ? value : null}</p>
-                            <p>{items.id}</p>
+                            <div className={styles.rightAnswer}><p>{items.id}</p> <p> {value === items.name ? value : null}</p></div>
+                          
                             <div className={styles.border}>
                                 <div className={styles.rebus}>
                                     <img src={items.src} alt={items.id}/>
-                                    <div className={styles.prompt}>{isModalOpen && `rozwiązanie ma ${input.length} liter`}</div>
+                                    <div className={styles.prompt}>{isModalOpen && `Rozwiązanie ma ${input.length} liter`}</div>
                                     <button type='button' onClick={this.openModal}>?</button>
                                 </div>
                             </div> 
