@@ -15,9 +15,9 @@ class ImagesModal extends React.Component {
     inputRef = React.createRef()
 
     openModal = () => {
-        this.setState(prevState => ({
-            isModalOpen: !prevState.isModalOpen
-        }));
+        this.setState({
+            isModalOpen: true,
+        });
     };
 
     closeModal = () => {
@@ -27,11 +27,13 @@ class ImagesModal extends React.Component {
     };
 
     handleChange = (e)=> {
-       
+        this.setState({
+            isModalOpen: false,
+        });
         this.setState({
             value: e.target.value
         });
-        
+       
     }
 
     handleSubmit = (e)=> {
@@ -72,11 +74,16 @@ putInputs = () => {
                                 >
                                     X
                             </button>
-                            <p>{value === items.name ?'Brawo! Prawidłowa odpowiedź to: ' : null}</p>
-                            <div className={styles.rightAnswer}><p>{items.id}</p> <p> {value === items.name ? value : null}</p></div>
+                           
+                            <div className={styles.rightAnswer}>
+                                <p>{value === items.name ?'Brawo!  ' : null}</p>
+                                <p>Prawidłowa odpowiedź to:</p>
+                                <p>{value === items.name ? value  : null}</p>
+                            </div>
                           
                             <div className={styles.border}>
                                 <div className={styles.rebus}>
+                                <p className={styles.title}>{items.id}</p>
                                     <img src={items.src} alt={items.id}/>
                                     <div className={styles.prompt}>{isModalOpen && `Rozwiązanie ma ${input.length} liter`}</div>
                                     <button type='button' onClick={this.openModal}>?</button>
