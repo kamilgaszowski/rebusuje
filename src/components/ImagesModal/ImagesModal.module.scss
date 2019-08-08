@@ -64,18 +64,44 @@
         .title {
             position: absolute;
             top: 0;
-            left: 10px;
+            left: -40px;
             font-size: 20px;
             font-weight: bold;
+            line-height: 0;
 
 
+        }
+
+        .exitBtn {
+            position: absolute;
+            top: 0;
+            right: -40px;
+            margin: 0;
+            width: 30px;
+            height: 30px;
+        
+            background: rgb(184, 181, 181);
+            font-size: 20px;
+            color: rgb(247, 244, 244);
+            border-radius: 10px;
+        
+            &:hover {
+                width: 29.5px;
+                height: 29.5px;
+              }
+              &:focus{
+                width: 29px;
+                height: 29px;
+                outline: none;
+              }
+        
         }
     }
 
       button {
           position: absolute;
           bottom: 0;
-          right: -50px;
+          right: -40px;
           width: 30px;
           height: 30px;
           background: rgb(184, 181, 181);
@@ -96,31 +122,6 @@
           
       }
 	
-}
-
-.button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 5vh 10vw 0 0;
-    width: 30px;
-    height: 30px;
-
-    background: rgb(184, 181, 181);
-    font-size: 20px;
-    color: rgb(247, 244, 244);
-    border-radius: 10px;
-
-    &:hover {
-        width: 29.5px;
-        height: 29.5px;
-      }
-      &:focus{
-        width: 29px;
-        height: 29px;
-        outline: none;
-      }
-
 }
 
 }
@@ -179,6 +180,11 @@
     outline-style: auto;
     outline: 2px rgb(68, 1, 1);
     letter-spacing: 8px;
+
+    &::placeholder{
+        color: #e9e1e1;
+        letter-spacing: 4px;
+    }
     
 
     }

@@ -68,12 +68,7 @@ putInputs = () => {
                     {context=>(
                         <div className={styles.container}>
                             <div className={styles.wrapper}>
-                            <button 
-                                onClick={() => context.closeModal()}
-                                className={styles.button}
-                                >
-                                    X
-                            </button>
+                            
                            
                             <div className={styles.rightAnswer}>
                                 <p>{value === items.name ?'Brawo!  ' : null}</p>
@@ -82,7 +77,14 @@ putInputs = () => {
                             </div>
                           
                             <div className={styles.border}>
+                           
                                 <div className={styles.rebus}>
+                                <button 
+                                onClick={() => context.closeModal()}
+                                className={styles.exitBtn}
+                                >
+                                    X
+                            </button>
                                 <p className={styles.title}>{items.id}</p>
                                     <img src={items.src} alt={items.id}/>
                                     <div className={styles.prompt}>{isModalOpen && `Rozwiązanie ma ${input.length} liter`}</div>
@@ -90,12 +92,13 @@ putInputs = () => {
                                 </div>
                             </div> 
                             
-                            <form className={styles.form}  >
-                                <label>Wpisz swoje rozwiązanie:</label>
+                            <form className={styles.form}>
                                 <input 
                                     className={styles.input}
                                      onChange={this.handleChange}
-                                     maxLength={items.name.length} />  
+                                     maxLength={items.name.length}
+                                     placeholder='Wpisz swoje rozwiązanie:'
+                                     required />  
                                 
                             </form> 
                            
