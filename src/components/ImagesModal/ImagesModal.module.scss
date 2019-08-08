@@ -32,14 +32,20 @@
         color: #000;
         text-transform: uppercase;
         font-size: 20px;
+
         :first-child{
             color: red;
+        }
+
+        :nth-child(3){
+            color: rgb(4, 221, 4);
         }
         
     }
 
 
 .border {
+    position: relative;
     flex-basis: 80%;
     display: flex;
     margin: 0 auto;
@@ -50,6 +56,21 @@
     align-items: center;
     box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.1);
     border-radius: 10px;
+
+    .rebus {
+        position: relative;
+      
+
+        .title {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+
+
+        }
+    }
 
       button {
           position: absolute;

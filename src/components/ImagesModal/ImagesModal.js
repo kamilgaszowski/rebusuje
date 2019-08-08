@@ -15,9 +15,9 @@ class ImagesModal extends React.Component {
     inputRef = React.createRef()
 
     openModal = () => {
-        this.setState({
-            isModalOpen: true,
-        });
+        this.setState(prevState => ({
+            isModalOpen: !prevState.isModalOpen,
+        }));
     };
 
     closeModal = () => {
