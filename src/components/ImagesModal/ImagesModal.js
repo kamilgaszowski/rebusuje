@@ -56,18 +56,16 @@ putInputs = () => {
     render(){
         
         const {items, isModalOpen, value} = this.state;
-
         let input = [];
         input = items.name.split("");
-        
-       
        
         return (
             <>
           
                 <AppContext.Consumer>
                     {context=>(
-                         <div className={styles.wrapper}>
+                        <div className={styles.container}>
+                            <div className={styles.wrapper}>
                             <button 
                                 onClick={() => context.closeModal()}
                                 className={styles.button}
@@ -80,6 +78,7 @@ putInputs = () => {
                             <div className={styles.border}>
                                 <div className={styles.rebus}>
                                     <img src={items.src} alt={items.id}/>
+                                    <div className={styles.prompt}>{isModalOpen && `rozwiązanie ma ${input.length} liter`}</div>
                                     <button type='button' onClick={this.openModal}>?</button>
                                 </div>
                             </div> 
@@ -90,10 +89,12 @@ putInputs = () => {
                                     className={styles.input}
                                      onChange={this.handleChange}
                                      maxLength={items.name.length} />  
-                                 <p>{isModalOpen && `rozwiązanie ma ${input.length} liter`}</p>
+                                
                             </form> 
                            
                         </div>
+                        </div>
+                         
                     )}
                 
                 </AppContext.Consumer>

@@ -8,7 +8,6 @@ class Image extends React.Component {
     state = {
         items: this.props,
         isModalOpen: false,
-        currentIndex: 0,
     }
 
     openModal = () => {
@@ -29,20 +28,24 @@ class Image extends React.Component {
       const {isModalOpen, items} = this.state;
       const contextElement = {
           closeModal: this.closeModal,
+          items: this.state,
       }
         return(
             
            <AppContext.Provider value={contextElement}>
-               {isModalOpen && <ImagesModal {...items}/>}
+              
                 <div className={styles.wrapper}>
-                    <h2 className={items.title}>{items.id}</h2>
+              <h2 className={items.title}>{items.id}</h2>
                     <div className={styles.image}>
                         <div 
                             onClick={this.openModal}>
+                               
                                 <img src={items.src}  alt={items.id}/>
+                            
                         </div >
                     </div>     
                 </div>
+                 {isModalOpen ? <ImagesModal {...items}/> : null}
            </AppContext.Provider>
         )
     }
