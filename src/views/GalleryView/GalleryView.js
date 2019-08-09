@@ -1,39 +1,51 @@
 import React from 'react';
 
+
 import Image from '../../components/Image/Image';
-
+import { rebuses } from '../../data/rebuses';
 import styles from './GalleryView.module.scss';
-import AppContext from '../../contex';
-
-
+import ImagesModal from '../../components/ImagesModal/ImagesModal';
+import { Link } from 'react-router-dom';
 
 
 
 class GalleryView extends React.Component {
+    state = {
+        items: [...rebuses],
+        rebus: {},
+        isOpenRebus: false,
+      };
+
+    openRebus = (e) => {
+        Object.assign(this.state.rebus, e);
+        this.setState({
+            isOpenRebus: true,
+        })
+
+    }
  
     render (){
-
+        const {items, rebus, isOpenRebus} = this.state;
         return (
-            <AppContext.Consumer>
-                {context =>(
+                  <>
+                     {isOpenRebus && <ImagesModal {...rebus}/>}  
                      <div className={styles.wrapper}>
-                     {context.map(item => (
-                         
-                         <AppContext.Provider value={item} key={item.id}>
-                         <Image 
-                            className={styles.images}
-                            {...item}
+                     {items.map(item => (
+                         <>
+
+                         <Link 
+                            key={item.id}
+                            onClick={()=>this.openRebus(item)}>
+                              <Image className={styles.images}  {...item} alt='' />
+                         </Link>
+                          
                             
-                            /> 
-                         </AppContext.Provider>
-                        
+                         </>
                      ))} 
+                    
                  </div>
-                )}
-            </AppContext.Consumer>
-            
-         )
-    }
+                 </>
+                )}   
 };
 
 export default GalleryView
