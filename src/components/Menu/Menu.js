@@ -6,12 +6,8 @@ import styles from './Menu.module.scss';
 
 const Menu = () => (
     <nav >
-        <ul className={styles.menu}>
-        <li className={styles.menuLogo}>
-                <NavLink exact to="/">
-                <img src='  https://i.postimg.cc/BbSkQnQ6/rebusuje-logo.png' alt='home' />
-                </NavLink>
-            </li>
+     
+       
             <ul className={styles.nav}>
                 <li className={styles.navItem}>
                     <NavLink exact to="/gallery">
@@ -25,7 +21,7 @@ const Menu = () => (
                 </li>
             </ul>
            
-        </ul>
+   
         
     </nav>
     

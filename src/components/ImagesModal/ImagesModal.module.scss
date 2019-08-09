@@ -8,7 +8,6 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2;
     background-color: #fff;
    
 }
@@ -22,6 +21,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    background-color: #fff;
 
     .rightAnswer{
         display: flex;
@@ -150,7 +150,7 @@
 .form {
     margin: 10px 0;
     display: flex;
-    width: 50vw;
+    width: 90vw;
     flex-grow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -161,13 +161,11 @@
 .input {
     margin: 20px 5px;
     width: 3rem;
-
-    
     border: none;
     border-bottom: 1px solid #000;
     background: none;
     text-align: center;
-    font-size: 16px;
+    font-size: 1rem;
     color: #504f4f;
     text-transform: uppercase;
     outline-style: auto;
