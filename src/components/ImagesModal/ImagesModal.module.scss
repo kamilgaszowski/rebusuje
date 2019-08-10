@@ -1,5 +1,13 @@
+@keyframes open {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
 .container{
-  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,6 +15,7 @@
     min-height: 100vh;
     z-index: 2;
     background-color: #fff;
+    transition: all 1s ease-in-out;
 
     .title {
         position: absolute;
@@ -43,6 +52,8 @@
 }
 
 .wrapper {
+    animation-name: open;
+    animation-duration: 1s; 
     height: 100%;
     margin: 10px auto;
     display: flex;
