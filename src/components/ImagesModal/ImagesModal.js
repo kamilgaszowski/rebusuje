@@ -11,6 +11,7 @@ const ImagesModal = (props) => {
 
                 <div className={styles.container}>
                     <Link to={'/gallery/'} className={styles.exitBtn} onClick={props.onCloseRebus}>X</Link>
+                    <p className={styles.title}>{props.id}</p>
                 <div className={styles.wrapper}>
                 
                     <div className={styles.rightAnswer}>
@@ -19,11 +20,10 @@ const ImagesModal = (props) => {
                     <div className={styles.border}>
                         <div className={styles.rebus}>
                         
-                            <p className={styles.title}>{props.id}</p>
+                            
                             <img src={props.src} alt={props.id}/>  
                         </div>
-                    </div> 
-                    <form className={styles.form}>
+                        <form className={styles.form}>
                         {input.map((item, index) => (
                             <input 
                                 className={styles.input} 
@@ -34,6 +34,8 @@ const ImagesModal = (props) => {
                         ))}
                         <button type='button'>sprawdź</button> 
                     </form> 
+                    </div> 
+                    
                 </div>
             </div> 
 
