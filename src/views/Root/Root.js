@@ -111,8 +111,9 @@ checkAnswer = (e)=> {
                   />
               }
 
-              <Route path='/gallery/' component={GalleryView} />
+              
               <Route exact path='/' component={Hero}/>
+              <Route path='/gallery/' component={GalleryView} />
               <Route exact path='/contact' component={ContactView} /> 
             </AnimatedSwitch>
       </BrowserRouter>
