@@ -7,16 +7,9 @@ import styles from './Button.module.scss';
 
 
 const Button = ({children, to}) => (
-
- 
-   
-     <Link to={to} className={styles.button}>
+    <Link to={to} className={styles.button}>
         {children}
-    </Link >
-    
-     
-   
-   
+    </Link > 
 );
 
 export default Button;

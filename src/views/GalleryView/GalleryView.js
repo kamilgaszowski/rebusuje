@@ -16,39 +16,28 @@ class GalleryView extends React.Component {
         items: [...rebuses],  
       };
 
-
     render (){
         const {items} = this.state;
         return (
             <AppContex.Consumer>
                 {context=>(
                     <>
- <Logo />
-                      <div className={styles.wrapper}>
-                         
-                      {items.map(item => (
-                          <Link 
-                             to={`/gallery/${item.id}`}
-                             key={item.id}
-                             onClick={()=>context.openRebus(item)}>
-                               <Image className={styles.images}  {...item} />
-                          </Link>
-                      ))}
-                            
-                     
-                    </div>
-                    </>
-                    
+                        <Logo />
+                        <div className={styles.wrapper}>
+                            {items.map(item => (
+                                <Link 
+                                    to={`/gallery/${item.id}`}
+                                    key={item.id}
+                                    onClick={()=>context.openRebus(item)}>
+                                        <Image className={styles.images}  {...item} />
+                                </Link>
+                            ))}
+                        </div>
+                    </>  
                 )}
-            </AppContex.Consumer>
-                        
-                     
-                           
-                     
-             
-                );
-            } 
-                      
+            </AppContex.Consumer>   
+        );
+    }                         
 };
 
 export default GalleryView;

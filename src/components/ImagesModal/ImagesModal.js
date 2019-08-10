@@ -3,51 +3,42 @@ import {Link} from 'react-router-dom';
 
 import styles from'./ImagesModal.module.scss';
 
-
-
-const ImagesModal = (props) => {
-    // const input = props.name.split("");
-
+const ImagesModal = ({
+    onCloseRebus,
+    onCheckAnswer,
+    onHandleChange,
+    id,
+    src,
+    name,
+    index,
+}) => {
     return(
-
-                <div className={styles.container}>
-                    <Link to={'/gallery/'} className={styles.exitBtn} onClick={props.onCloseRebus}>X</Link>
-                    <p className={styles.title}>{props.id}</p>
-                <div className={styles.wrapper}>
-                
-                    <div className={styles.rightAnswer}>
-                       <p>{props.isAnswerRight && `brawo`}</p>
+        <div className={styles.container}>
+            <Link to={'/gallery/'} className={styles.exitBtn} onClick={onCloseRebus}>X</Link>
+            <p className={styles.title}>{id}</p>
+            <div className={styles.wrapper}>
+                <div className={styles.border}>
+                    <div className={styles.rebus}>
+                        <img src={src} alt={id}/>  
                     </div>
-                    <div className={styles.border}>
-                        <div className={styles.rebus}>
-                        
-                            
-                            <img src={props.src} alt={props.id}/>  
-                        </div>
-                        <form className={styles.form} onSubmit={props.onCheckAnswer}>
-                    
-                            <input 
-                                className={styles.input} 
-                                key={props.index}
-                                placeholder={`Podpowiedź: słowo ma ${props.name.length} liter ;)`}
-                                required
-                                onChange={props.onHandleChange}
-                                />
-                      
-                        <button type='button' onClick={props.onCheckAnswer}>sprawdź</button> 
+                    <form className={styles.form} onSubmit={onCheckAnswer}>
+                        <input 
+                            onChange={onHandleChange}
+                            className={styles.input} 
+                            key={index}
+                            type='text'
+                            placeholder={`${name.length} liter`}
+                            required
+                            autoFocus
+                            autoComplete='off'
+                            autoCorrect='off'
+                            />
+                        <input type='submit' value='Sprawdź' className={styles.button}/>
                     </form> 
-                    </div> 
-                    
-                </div>
-            </div> 
-
-        
-    )
-    
-        
-
-    
-    
+                </div> 
+            </div>
+        </div> 
+    )  
 };
   
 export default ImagesModal;

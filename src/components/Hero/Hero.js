@@ -11,11 +11,8 @@ const Hero = () => (
 			    </div>
 		    </div>	
             <Button to='/gallery/#1'>zagraj</Button>
-        </header>
-       
+        </header> 
     </>
-
-    
 );
 
 export default Hero;
