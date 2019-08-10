@@ -29,10 +29,10 @@ const ImagesModal = (props) => {
                             <input 
                                 className={styles.input} 
                                 key={props.index}
-                                
-                                placeholder={props.name.length}
+                                placeholder={`Podpowiedź: słowo ma ${props.name.length} liter ;)`}
                                 required
-                                onChange={props.onHandleChange}/>
+                                onChange={props.onHandleChange}
+                                />
                       
                         <button type='button' onClick={props.onCheckAnswer}>sprawdź</button> 
                     </form> 

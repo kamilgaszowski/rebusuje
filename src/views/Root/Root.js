@@ -93,6 +93,7 @@ checkAnswer = (e)=> {
                 exact path='/gallery/:id' 
                 component={ImagesModal} 
                 {...rebus} 
+                {...this.state}
                 onCloseRebus={this.closeRebus}
                 onHandleChange={this.handleChange}
                 onCheckAnswer={this.checkAnswer}
@@ -103,6 +104,7 @@ checkAnswer = (e)=> {
                 &&
                 <ImagesModal 
                   {...rebus} 
+                  {...this.state}
                   onCloseRebus={this.closeRebus}
                   onHandleChange={this.handleChange}
                   onCheckAnswer={this.checkAnswer}
