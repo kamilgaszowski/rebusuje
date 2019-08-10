@@ -12,19 +12,9 @@
     flex-wrap: nowrap;
     z-index: 1;
 
-    &Logo {
-        //visibility: hidden;
-        list-style: none;
-        max-width: 50px;
-      
-        img {
-            width: 200px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-        }
+    
     }
-}
+
 
 .nav {
     display: flex;

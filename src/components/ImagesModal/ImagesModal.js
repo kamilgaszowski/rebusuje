@@ -6,7 +6,8 @@ import styles from'./ImagesModal.module.scss';
 
 
 const ImagesModal = (props) => {
-    const input = props.name.split("");
+    // const input = props.name.split("");
+
     return(
 
                 <div className={styles.container}>
@@ -15,7 +16,7 @@ const ImagesModal = (props) => {
                 <div className={styles.wrapper}>
                 
                     <div className={styles.rightAnswer}>
-                       
+                       <p>{props.isAnswerRight && `brawo`}</p>
                     </div>
                     <div className={styles.border}>
                         <div className={styles.rebus}>
@@ -23,16 +24,17 @@ const ImagesModal = (props) => {
                             
                             <img src={props.src} alt={props.id}/>  
                         </div>
-                        <form className={styles.form}>
-                        {input.map((item, index) => (
+                        <form className={styles.form} onSubmit={props.onCheckAnswer}>
+                    
                             <input 
                                 className={styles.input} 
-                                key={index}
-                                maxLength='1'
-                                placeholder={index + 1}
-                                required/>
-                        ))}
-                        <button type='button'>sprawdź</button> 
+                                key={props.index}
+                                
+                                placeholder={props.name.length}
+                                required
+                                onChange={props.onHandleChange}/>
+                      
+                        <button type='button' onClick={props.onCheckAnswer}>sprawdź</button> 
                     </form> 
                     </div> 
                     

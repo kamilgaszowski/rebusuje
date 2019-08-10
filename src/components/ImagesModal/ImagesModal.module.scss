@@ -127,16 +127,28 @@
     margin: 10px 0;
     display: flex;
     width: 90vw;
-    flex-grow: row nowrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    button{
+       
+           
+            background: #000;
+            color: #fff;
+            outline: none;
+            border: none;
+            width: 100px;
+            height: 30px;
+        }
+    
 }
 
 
 .input {
     margin: 20px 5px;
-    width: 3rem;
+    width: 30vw;
     border: none;
     border-bottom: 1px solid #000;
     background: none;
