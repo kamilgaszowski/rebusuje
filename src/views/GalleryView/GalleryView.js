@@ -6,6 +6,7 @@ import { rebuses } from '../../data/rebuses';
 import styles from './GalleryView.module.scss';
 
 import { Link } from 'react-router-dom';
+import Logo from '../../components/Logo/Logo';
 
 
 
@@ -21,18 +22,23 @@ class GalleryView extends React.Component {
         return (
             <AppContex.Consumer>
                 {context=>(
+                    <>
+ <Logo />
                       <div className={styles.wrapper}>
+                         
                       {items.map(item => (
                           <Link 
                              to={`/gallery/${item.id}`}
                              key={item.id}
                              onClick={()=>context.openRebus(item)}>
-                               <Image className={styles.images}  {...item} alt='' />
+                               <Image className={styles.images}  {...item} />
                           </Link>
                       ))}
                             
                      
                     </div>
+                    </>
+                    
                 )}
             </AppContex.Consumer>
                         

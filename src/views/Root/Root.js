@@ -32,8 +32,8 @@ openRebus = (e) => {
     console.log(this.state.rebus);
 }
 
-closeRebus = (e) => {
-  e.preventDefault();
+closeRebus = () => {
+
   this.setState({
     isOpenRebus: false,
   })
@@ -43,26 +43,18 @@ closeRebus = (e) => {
   render(){
   const {rebus, isOpenRebus} = this.state;
   const context = {
-    rebus : this.state.rebus,
     openRebus: this.openRebus,
-    closeRebus: this.closeRebus,
     }
     return (
       <AppContex.Provider value={context}>
       <BrowserRouter>
-      
-
-      
         <Menu />
-        
             <Switch> 
-            {isOpenRebus && <ImagesModal {...rebus} onCloseRebus={this.closeRebus}/>}
-            <Route exact path='/gallery/:id' component={ImagesModal} {...rebus} onCloseRebus={this.closeRebus}/> }
-              <Route exact path='/gallery/' component={GalleryView} onOpenRebus={() => this.openRebus()}/>
-              
+              <Route exact path='/gallery/:id' component={ImagesModal} {...rebus} onCloseRebus={this.closeRebus}/> 
+              {isOpenRebus && <ImagesModal {...rebus} onCloseRebus={this.closeRebus}/>}
+              <Route path='/gallery/' component={GalleryView} />
               <Route exact path='/' component={Hero}/>
               <Route exact path='/contact' component={ContactView} /> 
-             
             </Switch>
       </BrowserRouter>
 

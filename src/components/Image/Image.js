@@ -4,13 +4,13 @@ import  styles  from './Image.module.scss';
 
 
 
- const Image = ({title, id, src}) => (
+ const Image = ({id, src}) => (
      
    
          <div className={styles.wrapper}>
-        <h2 className={title}>{id}</h2>
+        <h2 className={styles.title}>{id}</h2>
         <div className={styles.image}>
-            <img src={src}  alt={id}/>
+            <img src={src}  alt={`rebus nr ${id}`}/>
         </div >     
     </div>
 

@@ -10,13 +10,15 @@ const ImagesModal = (props) => {
     return(
 
                 <div className={styles.container}>
+                    <Link to={'/gallery/'} className={styles.exitBtn} onClick={props.onCloseRebus}>X</Link>
                 <div className={styles.wrapper}>
+                
                     <div className={styles.rightAnswer}>
                        
                     </div>
                     <div className={styles.border}>
                         <div className={styles.rebus}>
-                        <a href={'/gallery'} className={styles.exitBtn} onClick={props.onCloseRebus}>X</a>
+                        
                             <p className={styles.title}>{props.id}</p>
                             <img src={props.src} alt={props.id}/>  
                         </div>
