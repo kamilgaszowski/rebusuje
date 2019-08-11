@@ -8,7 +8,6 @@ import {rightMessage, wrongMessage, messageValue} from '../../data/messages';
 import Hero from '../../components/Hero/Hero';
 import Menu from '../../components/Menu/Menu';
 
-
 import GalleryView from '../GalleryView/GalleryView';
 import ContactView from '../ContactView/ContactView'
 import ImagesModal from '../../components/ImagesModal/ImagesModal';
@@ -26,8 +25,8 @@ class Root extends React.Component {
   };
 
 openRebus = (e) => {
-    Object.assign(this.state.rebus, e);
     this.setState({
+      rebus: e,
       isOpenRebus: true,
     }) 
 }
@@ -77,7 +76,7 @@ handleChange = (e)=> {
 
 checkAnswer = (e)=> {
   e.preventDefault();
-  this.state.value === this.state.rebus.name ? this.openModalRight() : this.openModalWrong();   
+  this.state.value !== this.state.rebus.name ? this.openModalWrong() : this.openModalRight();   
 }
 
   render(){
@@ -122,16 +121,13 @@ checkAnswer = (e)=> {
                   onCheckAnswer={this.checkAnswer}
                   />
               }
-
-              
+             
               <Route exact path='/' component={Hero}/>
               <Route path='/gallery/' component={GalleryView} />
               <Route exact path='/contact' component={ContactView} /> 
             </AnimatedSwitch>
       </BrowserRouter>
-
-      
-      
+     
        </AppContex.Provider>
     );
   } 
