@@ -4,13 +4,13 @@ import styles from './Menu.module.scss';
 
 
 
-const Menu = () => (
+const Menu = (props) => (
     <nav >
         <ul className={styles.menu}>
             <li className={styles.menuLogo}></li>
             <ul className={styles.nav}>
                 <li className={styles.navItem}>
-                    <NavLink exact to="/gallery">
+                    <NavLink exact to="/gallery" onClick={props.onCloseRebus}>
                     <img src='https://i.postimg.cc/15X9wTT8/menu.png' alt='home' />
                     </NavLink>
                 </li>

@@ -26,9 +26,10 @@ class GalleryView extends React.Component {
                         <div className={styles.wrapper}>
                             {items.map(item => (
                                 <Link 
+                                    onClick={()=>context.openRebus(item)}
                                     to={`/gallery/${item.id}`}
                                     key={item.id}
-                                    onClick={()=>context.openRebus(item)}>
+                                    >
                                         <Image className={styles.images}  {...item} />
                                 </Link>
                             ))}

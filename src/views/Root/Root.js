@@ -1,3 +1,5 @@
+/* eslint-disable react/no-direct-mutation-state */
+
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
@@ -25,17 +27,20 @@ class Root extends React.Component {
   };
 
 openRebus = (e) => {
-    this.setState({
-      rebus: e,
-      isOpenRebus: true,
-    }) 
+  Object.assign(this.state.rebus, e);
+  this.setState({
+    isOpenRebus: true,
+    value: '',
+  });
+   
 }
 
 closeRebus = () => {
   this.setState({
     isOpenRebus: false,
     isAnswerRight: false,
-  })
+  });
+  
 }
 
 openModalWrong = () => {
@@ -53,6 +58,7 @@ openModalWrong = () => {
 openModalRight = () => {
   this.setState({
       isAnswer: true,
+      
   });
   let congrat = '';
   congrat = [...rightMessage][Math.floor(Math.random() * rightMessage.length)];
@@ -68,15 +74,20 @@ closeModal = () => {
   });
 };
 
+
 handleChange = (e)=> {
+  e.preventDefault();
+
   this.setState({
-      value:  e.target.value,
-  }); 
+    value: this.state.value+e.target.value,  
+}); 
+console.log(this.state.value);
 }
 
 checkAnswer = (e)=> {
   e.preventDefault();
-  this.state.value !== this.state.rebus.name ? this.openModalWrong() : this.openModalRight();   
+  this.state.value !== this.state.rebus.name ? this.openModalWrong() : this.openModalRight(); 
+  
 }
 
   render(){
@@ -92,7 +103,7 @@ checkAnswer = (e)=> {
     return (
       <AppContex.Provider value={context}>
       <BrowserRouter>
-        <Menu />
+        <Menu onCloseRebus={this.closeRebus}/>
         {isAnswer && <Modal {...this.state} onCloseModal={this.closeModal}/>}
         
             <AnimatedSwitch
@@ -100,25 +111,15 @@ checkAnswer = (e)=> {
             atLeave={{ opacity: 0, scale: 0.8 }}
             atActive={{ opacity: 1, scale: 1 }}> 
 
-              <Route
-                exact path='/gallery/:id' 
-                component={ImagesModal} 
+              {
+                isOpenRebus
+                &&
+                <ImagesModal 
                 {...rebus} 
                 {...this.state}
                 onCloseRebus={this.closeRebus}
                 onHandleChange={this.handleChange}
                 onCheckAnswer={this.checkAnswer}
-                />
-
-              {
-                isOpenRebus
-                &&
-                <ImagesModal 
-                  {...rebus} 
-                  {...this.state}
-                  onCloseRebus={this.closeRebus}
-                  onHandleChange={this.handleChange}
-                  onCheckAnswer={this.checkAnswer}
                   />
               }
              
