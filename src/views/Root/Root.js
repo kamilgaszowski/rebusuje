@@ -1,11 +1,10 @@
-/* eslint-disable react/no-direct-mutation-state */
-
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import AppContex from '../../contex';
 import './Root.scss';
-import {rightMessage, wrongMessage, messageValue} from '../../data/messages';
+import {rightMessage, messageValue} from '../../data/messages';
 
 import Hero from '../../components/Hero/Hero';
 import Menu from '../../components/Menu/Menu';
@@ -13,7 +12,7 @@ import Menu from '../../components/Menu/Menu';
 import GalleryView from '../GalleryView/GalleryView';
 import ContactView from '../ContactView/ContactView'
 import ImagesModal from '../../components/ImagesModal/ImagesModal';
-import Modal from '../../components/Modal/Modal';
+
 
 
 class Root extends React.Component {
@@ -23,108 +22,105 @@ class Root extends React.Component {
     isAnswer: false,
     value: '',
     messageHeader: '',
-    messageValue: '',  
+    messageValue: messageValue.right,
   };
 
 openRebus = (e) => {
   Object.assign(this.state.rebus, e);
   this.setState({
     isOpenRebus: true,
-    value: '',
-  });
-   
+    value: '',  
+  });  
 }
 
 closeRebus = () => {
   this.setState({
     isOpenRebus: false,
-    isAnswerRight: false,
+    isAnswer: false,
   });
-  
 }
 
-openModalWrong = () => {
-  this.setState({
-      isAnswer: true,
-  });
-  let wrong = '';
-  wrong = [...wrongMessage][Math.floor(Math.random() * wrongMessage.length)];
-  this.setState({
-    messageHeader: wrong,
-    messageValue: messageValue.wrong,
-  }); 
-};
+// openModalRight = () => {
+//   this.setState({
+//       isAnswer: true,
+//       messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)],
+//       messageValue:  messageValue.right,    
+//   });
+// };
 
-openModalRight = () => {
-  this.setState({
-      isAnswer: true,
-      
-  });
-  let congrat = '';
-  congrat = [...rightMessage][Math.floor(Math.random() * rightMessage.length)];
-  this.setState({
-    messageHeader: congrat,
-    messageValue:  messageValue.right, 
-  }); 
-};
+// openModalPrompt = () => {
+//   this.setState({
+//     isAnswer: true, 
+//     messageHeader: [...wrongMessage][Math.floor(Math.random() * wrongMessage.length)],
+//     messageSubheader: 'Moze mała podpowiedź?',
+//     messageValue: `Właściwa odpowiedź ma ${this.state.rebus.name.length} liter`,
+// });
 
+// }
 closeModal = () => {
   this.setState({
       isAnswer: false,
   });
+ 
 };
 
-
-handleChange = (e)=> {
-  e.preventDefault();
-
-  this.setState({
-    value: this.state.value+e.target.value,  
-}); 
-console.log(this.state.value);
+handleChange = (e) => {
+  this.setState({value: e.target.value}, ()=>this.checkAnswer()); 
 }
 
-checkAnswer = (e)=> {
-  e.preventDefault();
-  this.state.value !== this.state.rebus.name ? this.openModalWrong() : this.openModalRight(); 
+checkAnswer = ()=> {
+  this.state.value === this.state.rebus.name ?
+  setTimeout(()=> {this.setState({
+      isAnswer: true,
+      messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)]
+    }) }, 400) : null;
+  }
+
+  onSubmit = (e)=> {
+    e.preventDefault();
+    this.state.value === this.state.rebus.name ?
+    setTimeout(()=> {this.setState({
+        isAnswer: true,
+        messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)]
+      }) }, 400) : null;
+    }
+
   
-}
+
 
   render(){
   const {
     rebus,
     isOpenRebus,
-    isAnswer,
   } = this.state;
   const context = {
     openRebus: this.openRebus,
+
     }
   
     return (
       <AppContex.Provider value={context}>
       <BrowserRouter>
         <Menu onCloseRebus={this.closeRebus}/>
-        {isAnswer && <Modal {...this.state} onCloseModal={this.closeModal}/>}
         
             <AnimatedSwitch
-            atEnter={{ opacity: 0, scale: 1.2}}
-            atLeave={{ opacity: 0, scale: 0.8 }}
-            atActive={{ opacity: 1, scale: 1 }}> 
-
+            atEnter={{ opacity: 0}}
+            atLeave={{ opacity: 0}}
+            atActive={{ opacity: 1}}> 
               {
                 isOpenRebus
                 &&
                 <ImagesModal 
                 {...rebus} 
                 {...this.state}
-                onCloseRebus={this.closeRebus}
                 onHandleChange={this.handleChange}
-                onCheckAnswer={this.checkAnswer}
+                onSubmit={this.onSubmit}
+                onCloseModal={this.closeModal}
                   />
               }
              
               <Route exact path='/' component={Hero}/>
-              <Route path='/gallery/' component={GalleryView} />
+              <Route path='/gallery/' component={GalleryView}/>
               <Route exact path='/contact' component={ContactView} /> 
             </AnimatedSwitch>
       </BrowserRouter>

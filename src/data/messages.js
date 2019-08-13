@@ -20,8 +20,7 @@ export const wrongMessage = [
     'Serio? Nie żartuj',
     'Daj spokój',
     'Nie wygłupiaj się!',
-    'hahaha',
-    '...',
+    'Ubaw po pachy, spróbuj ponownie',
 ];
 
 export const messageValue = {

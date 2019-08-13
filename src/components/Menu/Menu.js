@@ -15,7 +15,7 @@ const Menu = (props) => (
                     </NavLink>
                 </li>
                 <li className={styles.navItem}>
-                    <NavLink to="/contact">
+                    <NavLink to="/contact" onClick={props.onCloseRebus}>
                     <img src='https://i.postimg.cc/W4grjtwc/add-comment-button.png' alt='home' />
                     </NavLink>
                 </li>

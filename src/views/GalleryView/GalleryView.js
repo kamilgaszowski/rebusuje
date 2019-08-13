@@ -1,14 +1,11 @@
 import React from 'react';
 import AppContex from '../../contex';
-
 import Image from '../../components/Image/Image';
 import { rebuses } from '../../data/rebuses';
 import styles from './GalleryView.module.scss';
 
-import { Link } from 'react-router-dom';
+
 import Logo from '../../components/Logo/Logo';
-
-
 
 
 class GalleryView extends React.Component {
@@ -25,13 +22,11 @@ class GalleryView extends React.Component {
                         <Logo />
                         <div className={styles.wrapper}>
                             {items.map(item => (
-                                <Link 
+                                <div
                                     onClick={()=>context.openRebus(item)}
-                                    to={`/gallery/${item.id}`}
-                                    key={item.id}
-                                    >
+                                    key={item.id} >
                                         <Image className={styles.images}  {...item} />
-                                </Link>
+                                </div>
                             ))}
                         </div>
                     </>  
