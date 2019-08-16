@@ -79,24 +79,24 @@ closeModal = () => {
 };
 
 handleChange = (e) => {
-  this.setState({value: e.target.value}); 
+  this.setState({value: e.target.value.toLowerCase()}); 
   console.log(e.target.value);
 }
 
 checkAnswer = (e)=> {
   e.preventDefault();
+  this.setState({
+    isNotes: false,
+    isAnswer: true,
+  })
   this.state.value === this.state.rebus.name 
   ? (
    this.setState({
-      isNotes: false,
-      isAnswer: true,
       messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)],
       messageValue: messageValue.right,
     })
   ) : (
     this.setState({
-       isNotes: false,
-       isAnswer: true,
        messageHeader: [...wrongMessage][Math.floor(Math.random() * rightMessage.length)],
        messageValue: messageValue.wrong,
      })
