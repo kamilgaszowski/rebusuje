@@ -7,19 +7,18 @@ import styles from './Menu.module.scss';
 const Menu = (props) => (
     <nav >
         <ul className={styles.menu}>
-            <li className={styles.menuLogo}></li>
-            <ul className={styles.nav}>
-                <li className={styles.navItem}>
-                    <NavLink exact to="/gallery" onClick={props.onCloseRebus}>
+            
+                <li className={styles.nav_item}>
+                    <NavLink exact to="/" onClick={props.onCloseRebus}>
                     <img src='https://i.postimg.cc/15X9wTT8/menu.png' alt='home' />
                     </NavLink>
                 </li>
-                <li className={styles.navItem}>
+                <li className={styles.nav_item}>
                     <NavLink to="/contact" onClick={props.onCloseRebus}>
-                    <img src='https://i.postimg.cc/W4grjtwc/add-comment-button.png' alt='home' />
+                    <img src='https://i.postimg.cc/2yx4bcQD/baseline-alternate-email-black-48dp.png' alt='home' />
                     </NavLink>
                 </li>
-            </ul>
+           
         </ul>
     </nav>
 );

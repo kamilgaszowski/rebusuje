@@ -1,46 +1,36 @@
 .menu {
     position: fixed;
-    margin: 0;
     bottom: 10px;
-    left: -80px;
+    left: -35px;
     display: flex;
-    height: 90vh;
     background: none;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;
     list-style: none;
     z-index: 1;
 
-    
-    }
-
-
-.nav {
-    display: flex;
-    
-
-    &Item {
+    .nav_item {
         list-style: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 10px;
         width: 70px;
         height: 70px;
         background: rgba(255, 255, 255, 0.9);
         border-radius: 50%;
         border: none;
 
-        
-        
-    
          img {
-             margin: 0 auto;
              width: 35px; 
+             height: 35px;
          }
     }
-}
+    }
+ 
+
+  
+
 
 

@@ -2,42 +2,54 @@ import React from 'react';
 import styles from'./ImagesModal.module.scss';
 
 import Modal from '../Modal/Modal';
+import Notes from '../Notes/Notes';
+import Button from '../Button/Button';
 
 
 const ImagesModal = ({
     isAnswer,
-    onSubmit,
+    isNotes,
+    checkAnswer,
     onHandleChange,
     id,
     src,
-    name,
     value,
     messageHeader,
     messageValue,
     onCloseModal,
+    onOpenNotes,
+    handleNextRebus,
+    handlePrevRebus,
+    nextRebus,
+    prevRebus,
 
 }) => {
-    
-    const nameArray = name.split('');
     const props = {
         messageHeader,
         messageValue,
-        name,   
+        value,   
         onCloseModal,
+        onHandleChange,
+        checkAnswer,
 }
     return (
         <div className={styles.container}>
-          {isAnswer && <Modal  {...props}/>}
+            <div className={styles.notes} onClick={onOpenNotes}><img src={'https://i.postimg.cc/c177bHVb/baseline-note-add-black-48dp.png'} alt=''/></div>
+            {isAnswer && <Modal  {...props}/>}
+            {isNotes && <Notes {...props}/>}
+          
             <div className={styles.wrapper}>
                 <div className={styles.border}>
+                    {!prevRebus ? null :<button className={styles.prevRebus} onClick={handlePrevRebus}><img src='https://i.postimg.cc/3RsrTYVS/baseline-arrow-back-ios-black-48dp.png' alt='poprzedni'/></button>}
+                    {!nextRebus? null :<button className={styles.nextRebus} onClick={handleNextRebus}><img src='https://i.postimg.cc/pddLQ0KZ/baseline-arrow-forward-ios-black-48dp.png' alt='następny'/></button>}
                     <div className={styles.rebus}>
-                        <p className={styles.title_hash}>{id}</p>
-                        <p className={value === name ? styles.title : styles.title_hidden}>
-                            {value === name ? name : nameArray.map(()=> '*')}
-                        </p>
+                    
+                        <p className={styles.title_hash}>#{id}</p>
                         <img src={src} alt={id}/>  
+                       
                     </div>
-                    <form className={styles.form} onSubmit={onSubmit}>
+                    
+                    <form className={styles.form} onSubmit={checkAnswer}>
                         <label>Wpisz swoje rozwiązanie:</label>
                         <div className={styles.inputs}>
                           <input 
@@ -48,7 +60,10 @@ const ImagesModal = ({
                           required
                           autoFocus
                           />  
+                         
                         </div>
+                        <Button value={'sprawdź'}/>
+                       
                     </form> 
                 </div> 
             </div>

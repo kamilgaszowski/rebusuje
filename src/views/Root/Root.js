@@ -4,9 +4,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import AppContex from '../../contex';
 import './Root.scss';
-import {rightMessage, messageValue} from '../../data/messages';
+import { rebuses } from '../../data/rebuses';
+import {rightMessage, wrongMessage, messageValue} from '../../data/messages';
 
-import Hero from '../../components/Hero/Hero';
 import Menu from '../../components/Menu/Menu';
 
 import GalleryView from '../GalleryView/GalleryView';
@@ -15,23 +15,54 @@ import ImagesModal from '../../components/ImagesModal/ImagesModal';
 
 
 
+
 class Root extends React.Component {
   state = {
-    rebus: {},
+    items: [...rebuses],
+    rebus: [],
     isOpenRebus: false,
     isAnswer: false,
+    isNotes: false,
     value: '',
     messageHeader: '',
-    messageValue: messageValue.right,
+    messageValue: '',
+    nextRebus: [],
+    prevRebus: [],
   };
+  
 
 openRebus = (e) => {
-  Object.assign(this.state.rebus, e);
   this.setState({
-    isOpenRebus: true,
-    value: '',  
-  });  
+    rebus: e,
+    isOpenRebus: true, 
+  
+  }, ()=>this.getDataFromRebus()); 
 }
+
+getDataFromRebus = () => {
+  const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
+  const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id -1);
+  this.setState({
+    nextRebus: nextRebus[0],
+    prevRebus: prevRebus[0],
+  });
+}
+
+handleNextRebus = () => {
+  this.setState({
+    value: ' ',
+    rebus: this.state.nextRebus,
+
+  }, ()=>this.getDataFromRebus());
+}
+
+handlePrevRebus = () => {
+  this.setState({
+    value: ' ',
+    rebus: this.state.prevRebus,
+  }, ()=>this.getDataFromRebus());
+}
+
 
 closeRebus = () => {
   this.setState({
@@ -40,62 +71,55 @@ closeRebus = () => {
   });
 }
 
-// openModalRight = () => {
-//   this.setState({
-//       isAnswer: true,
-//       messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)],
-//       messageValue:  messageValue.right,    
-//   });
-// };
-
-// openModalPrompt = () => {
-//   this.setState({
-//     isAnswer: true, 
-//     messageHeader: [...wrongMessage][Math.floor(Math.random() * wrongMessage.length)],
-//     messageSubheader: 'Moze mała podpowiedź?',
-//     messageValue: `Właściwa odpowiedź ma ${this.state.rebus.name.length} liter`,
-// });
-
-// }
 closeModal = () => {
   this.setState({
       isAnswer: false,
+      isNotes: false,
   });
- 
 };
 
 handleChange = (e) => {
-  this.setState({value: e.target.value}, ()=>this.checkAnswer()); 
+  this.setState({value: e.target.value}); 
+  console.log(e.target.value);
 }
 
-checkAnswer = ()=> {
-  this.state.value === this.state.rebus.name ?
-  setTimeout(()=> {this.setState({
+checkAnswer = (e)=> {
+  e.preventDefault();
+  this.state.value === this.state.rebus.name 
+  ? (
+   this.setState({
+      isNotes: false,
       isAnswer: true,
-      messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)]
-    }) }, 400) : null;
-  }
+      messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)],
+      messageValue: messageValue.right,
+    })
+  ) : (
+    this.setState({
+       isNotes: false,
+       isAnswer: true,
+       messageHeader: [...wrongMessage][Math.floor(Math.random() * rightMessage.length)],
+       messageValue: messageValue.wrong,
+     })
+   )
+}
 
-  onSubmit = (e)=> {
-    e.preventDefault();
-    this.state.value === this.state.rebus.name ?
-    setTimeout(()=> {this.setState({
-        isAnswer: true,
-        messageHeader: [...rightMessage][Math.floor(Math.random() * rightMessage.length)]
-      }) }, 400) : null;
-    }
-
-  
-
+onOpenNotes = () => {
+  this.setState(prevState =>({
+    isNotes: !prevState.isNotes,
+  }));
+}
+ 
 
   render(){
   const {
     rebus,
     isOpenRebus,
+    items,
   } = this.state;
   const context = {
     openRebus: this.openRebus,
-
+    items: this.state.items,
+    value: this.state.value,
     }
   
     return (
@@ -114,13 +138,14 @@ checkAnswer = ()=> {
                 {...rebus} 
                 {...this.state}
                 onHandleChange={this.handleChange}
-                onSubmit={this.onSubmit}
+                checkAnswer={this.checkAnswer}
                 onCloseModal={this.closeModal}
+                handleNextRebus={this.handleNextRebus}
+                handlePrevRebus={this.handlePrevRebus}
+                onOpenNotes={this.onOpenNotes}
                   />
               }
-             
-              <Route exact path='/' component={Hero}/>
-              <Route path='/gallery/' component={GalleryView}/>
+              <Route exact path='/' component={GalleryView} {...items}/>
               <Route exact path='/contact' component={ContactView} /> 
             </AnimatedSwitch>
       </BrowserRouter>
