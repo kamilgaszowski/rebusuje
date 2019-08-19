@@ -13,7 +13,7 @@ const Notes = ({onCloseModal, onHandleChange, checkAnswer, onMouseDown}) => (
         <h3 className={styles.header}>NOTATKI</h3>
         
             <form className={styles.form_notes} onMouseDown={onMouseDown} onSubmit={checkAnswer}>
-            <textarea className={styles.notes} onChange={onHandleChange} placeholder='zapisz swoje myśli' autoFocus/>
+            <textarea className={styles.notes} onChange={onHandleChange} placeholder='zapisz swoje myśli'/>
             <Button value={'ustaw odpowiedź'} type='submit'/>
         </form>
     </div>

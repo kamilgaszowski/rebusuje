@@ -65,7 +65,6 @@ const ImagesModal = ({
                           type='text'
                           autoComplete='off'
                           required
-                          autoFocus
                           />  
                          
                         </div>

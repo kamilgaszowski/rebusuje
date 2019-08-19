@@ -164,8 +164,10 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     width: 60vmin;
     height: 3rem;
     border: none;
+    border-bottom: .5px solid #000;
     border-radius: 3px;
-    background: transparent;
+    box-shadow: $shadow;
+    background: rgba(163, 163, 163, 0.1);
     text-align: center;
     font-size: 1rem;
     color: #0a0a0a;
@@ -173,13 +175,13 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     outline-style: auto;
     outline: 2px rgba(131, 160, 255, 0.1);
     letter-spacing: 8px;
-    box-shadow: $shadow;
     transition: all .5s linear;
 
     &:focus {
         background: rgba(48, 48, 48, 0.1);
         box-shadow: none;
         border: none;
+        border-bottom: .5px solid #000;
         
     }
     
