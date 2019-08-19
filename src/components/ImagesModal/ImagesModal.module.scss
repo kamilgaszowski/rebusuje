@@ -1,4 +1,4 @@
-$shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
+$shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
 
 @keyframes open {
     0% {
@@ -90,10 +90,10 @@ $shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
             background: transparent;
             border: none;
             outline: none;
-            opacity: 0.2;
+            opacity: 0.05;
             width: 10rem;
             height: 10rem;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
 
             img {
                 width: 10rem;
@@ -101,7 +101,7 @@ $shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
             }
     
             &:hover{
-                opacity: 0.3;
+                opacity: 0.1;
             }
         }
     
@@ -144,7 +144,6 @@ $shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
         }
 	
     }
-
 }
 
 .form {
@@ -161,10 +160,9 @@ $shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
     display: flex;
 }
 .input {
-    margin: 20px 5px;
+    margin: 20px 5px 5px;
     width: 60vmin;
     height: 3rem;
-    margin-left: 5px;
     border: none;
     border-radius: 3px;
     background: transparent;
@@ -176,10 +174,10 @@ $shadow: 0px 0px 20px -3px rgba(2, 61, 255, 0.1);
     outline: 2px rgba(131, 160, 255, 0.1);
     letter-spacing: 8px;
     box-shadow: $shadow;
-    transition: all .6s ease;
+    transition: all .5s linear;
 
     &:focus {
-        background: rgba(129, 176, 245, 0.05);
+        background: rgba(48, 48, 48, 0.1);
         box-shadow: none;
         border: none;
         

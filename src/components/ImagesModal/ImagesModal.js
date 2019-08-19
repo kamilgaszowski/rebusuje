@@ -22,6 +22,7 @@ const ImagesModal = ({
     handlePrevRebus,
     nextRebus,
     prevRebus,
+    onMouseDown,
 
 }) => {
     const props = {
@@ -31,6 +32,8 @@ const ImagesModal = ({
         onCloseModal,
         onHandleChange,
         checkAnswer,
+        onMouseDown,
+
 }
     return (
         <div className={styles.container}>

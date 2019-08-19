@@ -28,8 +28,10 @@ class Root extends React.Component {
     messageValue: '',
     nextRebus: [],
     prevRebus: [],
+
   };
   
+
 
 openRebus = (e) => {
   this.setState({
@@ -101,6 +103,8 @@ checkAnswer = (e)=> {
    )
 }
 
+onMouseDown= (e) => {e.stopPropagation()}
+
 onOpenNotes = () => {
   this.setState(prevState =>({
     isNotes: !prevState.isNotes,
@@ -141,6 +145,7 @@ onOpenNotes = () => {
                 handleNextRebus={this.handleNextRebus}
                 handlePrevRebus={this.handlePrevRebus}
                 onOpenNotes={this.onOpenNotes}
+                onMouseDown={this.onMouseDown}
                   />
               }
               <Route exact path='/' component={GalleryView} {...items}/>
