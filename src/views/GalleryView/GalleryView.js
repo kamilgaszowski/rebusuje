@@ -14,7 +14,6 @@ const GalleryView = () => {
                     <div className={styles.wrapper}>
                         {context.items.map(item => (
                             <Image
-                                className={styles.images}
                                 {...item}
                                 {...context}
                                 onOpenRebus={()=>context.openRebus(item)}

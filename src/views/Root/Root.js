@@ -63,7 +63,6 @@ handlePrevRebus = () => {
   }, ()=>this.getDataFromRebus());
 }
 
-
 closeRebus = () => {
   this.setState({
     isOpenRebus: false,
@@ -80,7 +79,6 @@ closeModal = () => {
 
 handleChange = (e) => {
   this.setState({value: e.target.value.toLowerCase()}); 
-  console.log(e.target.value);
 }
 
 checkAnswer = (e)=> {

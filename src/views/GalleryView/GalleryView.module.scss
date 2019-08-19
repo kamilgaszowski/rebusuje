@@ -1,25 +1,13 @@
 .wrapper {
-    margin: 0 auto;
+    counter-reset: hash;
+    margin: 40px auto;
+    padding: 0 0 50px;
     width: 80vw;
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background: #fff;
-   
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .images {
-        width: 300px;
-        height: 300px;
-        margin: 10px;
-        border: 1px solid #000;
-        background: #fff; 
-    }
 }
 

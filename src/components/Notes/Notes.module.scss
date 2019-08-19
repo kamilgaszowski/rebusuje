@@ -1,3 +1,5 @@
+$shadow: 0px 0px 10px -1px rgba(0,0,0,0.1);
+
 .container {
     position: fixed;
     display: flex;
@@ -37,11 +39,21 @@
 .notes {
     min-width: 40vw;
     min-height: 40vh;
-    border: 1px solid #000;  
+    padding: 20px;
+    margin-bottom: 30px;
+    border: none;  
+    border-radius:5px;
     outline: none;
     text-transform: uppercase;
+    box-shadow: $shadow;
 
+    &::placeholder{
+        font-size: 1.3rem;
+        color: #e2dede;
+        text-align: center;
+    }
 }
+
 .close{
     position: absolute;
     top: -10px;

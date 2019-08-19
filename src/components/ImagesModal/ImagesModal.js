@@ -40,12 +40,16 @@ const ImagesModal = ({
           
             <div className={styles.wrapper}>
                 <div className={styles.border}>
-                    {!prevRebus ? null :<button className={styles.prevRebus} onClick={handlePrevRebus}><img src='https://i.postimg.cc/3RsrTYVS/baseline-arrow-back-ios-black-48dp.png' alt='poprzedni'/></button>}
-                    {!nextRebus? null :<button className={styles.nextRebus} onClick={handleNextRebus}><img src='https://i.postimg.cc/pddLQ0KZ/baseline-arrow-forward-ios-black-48dp.png' alt='następny'/></button>}
-                    <div className={styles.rebus}>
                     
+                    <div className={styles.rebus}>
                         <p className={styles.title_hash}>#{id}</p>
-                        <img src={src} alt={id}/>  
+                        <img src={src} alt={id}/> 
+
+                        <div>
+                            {!prevRebus ? null :<button className={styles.prevRebus} onClick={handlePrevRebus}><img src='https://i.postimg.cc/3RsrTYVS/baseline-arrow-back-ios-black-48dp.png' alt='poprzedni'/></button>}
+                            {!nextRebus? null :<button className={styles.nextRebus} onClick={handleNextRebus}><img src='https://i.postimg.cc/pddLQ0KZ/baseline-arrow-forward-ios-black-48dp.png' alt='następny'/></button>}
+  
+                        </div>
                        
                     </div>
                     
