@@ -1,0 +1,31 @@
+.wrapper {
+	position: relative;
+	height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.border {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    box-shadow: 0px 0px 100px -5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+	max-width: 70vw;
+	max-height: 70vh;
+}
+
+.logo {
+    padding: 5vw;
+
+    img {
+      max-width: 55vw;
+      height: auto;
+    }
+}
