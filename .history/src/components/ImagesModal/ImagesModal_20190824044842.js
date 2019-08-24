@@ -5,8 +5,6 @@ import styles from './ImagesModal.module.scss';
 import Notes from '../Notes/Notes';
 import Button from '../Button/Button';
 
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
 
 const ImagesModal = ({
     isRightAnswer,
@@ -62,26 +60,20 @@ const ImagesModal = ({
                     </div>
 
                     <form className={styles.form} onSubmit={checkAnswer}>
-                        <label>
-                           {!isWrongAnswer && !isRightAnswer ? 'Wpisz swoje rozwiązanie:' : (isRightAnswer ? 'Prawidłowa odpowiedź' : 'Spróbuj jeszcze raz') }
-                        </label>
+                        <label>Wpisz swoje rozwiązanie:</label>
 
                             <input
                                 value={value}
                                 placeholder={repeat('*', name.length)}
                                 onChange={onHandleChange}
-                                className={!isWrongAnswer && !isRightAnswer ? styles.input :  (isRightAnswer ? styles.input_right : styles.input_wrong)}
+                                className={isWrongAnswer ? styles.input :  styles.input_right}
                                 type='text'
                                 autoComplete='off'
                                 required
                             />
                             <div className={styles.check}>
-                                {!isWrongAnswer && !isRightAnswer ? (
-                                <CheckCircleIcon className={styles.icon}/>
-                                ) : (
-                                    isRightAnswer ? <CheckCircleIcon className={styles.right}/>
-                                    :
-                                    <CheckCircleIcon className={styles.wrong}/>)}
+                                {isRightAnswer ? (<p className={styles.right}>V</p>) : (<p className={styles.right_hidden}>V</p>)}
+                                {isWrongAnswer ? (<p className={styles.wrong}>X</p>) : (<p className={styles.wrong_hidden}>X</p>)}
 
                             </div>
                         <Button value={'sprawdź'} />

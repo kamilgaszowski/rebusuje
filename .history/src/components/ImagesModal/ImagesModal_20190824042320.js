@@ -5,8 +5,6 @@ import styles from './ImagesModal.module.scss';
 import Notes from '../Notes/Notes';
 import Button from '../Button/Button';
 
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
 
 const ImagesModal = ({
     isRightAnswer,
@@ -39,7 +37,6 @@ const ImagesModal = ({
         onMouseDown,
 
     }
-    const repeat = (string, times) => times > 0 ? string.repeat(times) : "";
     // const hiddenName = name.split('');
     return (
         <div className={styles.container}>
@@ -62,28 +59,24 @@ const ImagesModal = ({
                     </div>
 
                     <form className={styles.form} onSubmit={checkAnswer}>
-                        <label>
-                           {!isWrongAnswer && !isRightAnswer ? 'Wpisz swoje rozwiązanie:' : (isRightAnswer ? 'Prawidłowa odpowiedź' : 'Spróbuj jeszcze raz') }
-                        </label>
+                        <label>Wpisz swoje rozwiązanie:</label>
+                        <div className={styles.inputs}>
 
                             <input
                                 value={value}
-                                placeholder={repeat('*', name.length)}
+                                placeholder={`*${name.length}`}
                                 onChange={onHandleChange}
-                                className={!isWrongAnswer && !isRightAnswer ? styles.input :  (isRightAnswer ? styles.input_right : styles.input_wrong)}
+                                className={name !== value ? styles.input : styles.input_right}
                                 type='text'
                                 autoComplete='off'
                                 required
                             />
                             <div className={styles.check}>
-                                {!isWrongAnswer && !isRightAnswer ? (
-                                <CheckCircleIcon className={styles.icon}/>
-                                ) : (
-                                    isRightAnswer ? <CheckCircleIcon className={styles.right}/>
-                                    :
-                                    <CheckCircleIcon className={styles.wrong}/>)}
+                                {isRightAnswer ? (<p className={styles.right}>V</p>) : (<p className={styles.right}></p>)}
+                                {isWrongAnswer ? (<p className={styles.wrong}>X</p>) : (<p className={styles.wrong}></p>)}
 
                             </div>
+                        </div>
                         <Button value={'sprawdź'} />
 
                     </form>

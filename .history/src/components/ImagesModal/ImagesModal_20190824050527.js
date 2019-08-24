@@ -5,8 +5,6 @@ import styles from './ImagesModal.module.scss';
 import Notes from '../Notes/Notes';
 import Button from '../Button/Button';
 
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
 
 const ImagesModal = ({
     isRightAnswer,
@@ -76,12 +74,8 @@ const ImagesModal = ({
                                 required
                             />
                             <div className={styles.check}>
-                                {!isWrongAnswer && !isRightAnswer ? (
-                                <CheckCircleIcon className={styles.icon}/>
-                                ) : (
-                                    isRightAnswer ? <CheckCircleIcon className={styles.right}/>
-                                    :
-                                    <CheckCircleIcon className={styles.wrong}/>)}
+                                {isRightAnswer ? (<p className={styles.right}>V</p>) : (<p className={styles.right_hidden}>V</p>)}
+                                {isWrongAnswer ? (<p className={styles.wrong}>X</p>) : (<p className={styles.wrong_hidden}>X</p>)}
 
                             </div>
                         <Button value={'sprawdź'} />

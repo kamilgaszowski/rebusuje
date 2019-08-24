@@ -76,12 +76,7 @@ const ImagesModal = ({
                                 required
                             />
                             <div className={styles.check}>
-                                {!isWrongAnswer && !isRightAnswer ? (
-                                <CheckCircleIcon className={styles.icon}/>
-                                ) : (
-                                    isRightAnswer ? <CheckCircleIcon className={styles.right}/>
-                                    :
-                                    <CheckCircleIcon className={styles.wrong}/>)}
+                                {!isWrongAnswer && !isRightAnswer ? (<CheckCircleIcon className={styles.hidden_icon}/>) : (isRightAnswer ? <CheckCircleIcon className={styles.right}/> : <CheckCircleIcon className={styles.wrong}/>)}
 
                             </div>
                         <Button value={'sprawdź'} />

@@ -85,18 +85,12 @@ class Root extends React.Component {
 
     checkAnswer = (e) => {
         e.preventDefault();
-
+        
         this.state.value === this.state.rebus.name
         ?
-        this.setState({
-                isRightAnswer: true,
-                isWrongAnswer: false,
-            })
+        this.setState(prevState=>({isRightAnswer: !prevState.isRightAnswer}))
         :
-        this.setState({
-            isRightAnswer: false,
-            isWrongAnswer: true,
-        })
+        this.setState(prevState=>({isWrongAnswer: !prevState.isWrongAnswer}))
     }
 
     onMouseDown = (e) => { e.stopPropagation() }
