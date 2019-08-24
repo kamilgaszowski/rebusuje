@@ -1,24 +1,25 @@
 $shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
 
 .hidden {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
-  bottom: -1000px;
-  left: 50%;
-  max-width: 90vmin;
-  z-index: 3;
-  transform: translate(-50%, 1000px);
-  transition: opacity .05s ease-in-out, transform .5s ease-in-out;
+  opacity: 0;
+
+  right: -100px;
+  width: 200px;
+  z-index: 999;
+  transform: translateX(-50px);
+  transition: opacity .08s ease-in-out, transform .2s ease-in-out;
 }
 
 .show{
   @extend .hidden;
-  bottom: 100px;
-  transform: translate(-50%, 0);
+  right: 0;
+  transform: translateX(100px);
   opacity: 1;
+  transition: opacity .08s ease-in-out, transform .2s ease-in-out;
 }
 
 .wrapper {
@@ -26,11 +27,11 @@ $shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background: transparent;
   position: fixed;
   border: none;
   border-radius: 3px;
-  // cursor: move;
+  cursor: move;
   color: #000;
 }
 .header {
@@ -45,8 +46,7 @@ $shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
 
 }
 .notes {
-  width: 80vmin;
-  height: 30vmin;
+  height: 30vmax;
   padding: 20px;
   margin-bottom: 30px;
   border: 0.5px solid #000;
