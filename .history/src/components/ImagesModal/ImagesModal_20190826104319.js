@@ -47,10 +47,15 @@ const ImagesModal = ({
         <div className={styles.container}>
             <div className={styles.notes} onClick={onOpenNotes}><img src={'https://i.postimg.cc/c177bHVb/baseline-note-add-black-48dp.png'} alt='' /></div>
 
+
+            <div className={styles.sygnature}>
+                <img src='https://i.postimg.cc/WzRcNw2V/mis.png' alt='' />
+            </div>
+
             <div className={styles.wrapper}>
 
                 <div className={styles.border}>
-
+                <Notes {...props}/>
                     {!prevRebus ? null : <button className={styles.prevRebus} onClick={handlePrevRebus}><img src='https://i.postimg.cc/3RsrTYVS/baseline-arrow-back-ios-black-48dp.png' alt='poprzedni' /></button>}
                     {!nextRebus ? null : <button className={styles.nextRebus} onClick={handleNextRebus}><img src='https://i.postimg.cc/pddLQ0KZ/baseline-arrow-forward-ios-black-48dp.png' alt='następny' /></button>}
                     <div className={styles.rebus}>
@@ -62,33 +67,32 @@ const ImagesModal = ({
 
                     <form className={styles.form} onSubmit={checkAnswer}>
                         <label>
-                            {!isWrongAnswer && !isRightAnswer ? 'Wpisz swoje rozwiązanie:' : (isRightAnswer ? 'Prawidłowa odpowiedź' : 'Spróbuj jeszcze raz')}
+                           {!isWrongAnswer && !isRightAnswer ? 'Wpisz swoje rozwiązanie:' : (isRightAnswer ? 'Prawidłowa odpowiedź' : 'Spróbuj jeszcze raz') }
                         </label>
 
-                        <input
-                            value={value}
-                            placeholder={repeat('*', name.length)}
-                            onChange={onHandleChange}
-                            className={!isWrongAnswer && !isRightAnswer ? styles.input : (isRightAnswer ? styles.input_right : styles.input_wrong)}
-                            type='text'
-                            autoComplete='off'
-                            required
-                        />
-                        <div className={styles.check}>
-                            {!isWrongAnswer && !isRightAnswer ? (
-                                <CheckCircleIcon className={styles.icon} />
-                            ) : (
-                                    isRightAnswer ? <CheckCircleIcon className={styles.right} />
-                                        :
-                                        <CancelIcon className={styles.wrong} />)}
+                            <input
+                                value={value}
+                                placeholder={repeat('*', name.length)}
+                                onChange={onHandleChange}
+                                className={!isWrongAnswer && !isRightAnswer ? styles.input :  (isRightAnswer ? styles.input_right : styles.input_wrong)}
+                                type='text'
+                                autoComplete='off'
+                                required
+                            />
+                            <div className={styles.check}>
+                                {!isWrongAnswer && !isRightAnswer ? (
+                                <CheckCircleIcon className={styles.icon}/>
+                                ) : (
+                                    isRightAnswer ? <CheckCircleIcon className={styles.right}/>
+                                    :
+                                    <CancelIcon className={styles.wrong}/>)}
 
-                        </div>
+                            </div>
                         <Button value={'sprawdź'} />
 
                     </form>
                 </div>
             </div>
-            <Notes {...props} />
         </div>
     )
 };

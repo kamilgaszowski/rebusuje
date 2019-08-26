@@ -8,14 +8,15 @@ import Logo from '../../components/Logo/Logo';
 const GalleryView = () => {
     return (
         <AppContex.Consumer>
-            {context => (
+            {context=>(
                 <>
+
                     <div className={styles.wrapper}>
                         {context.items.map(item => (
                             <Image
                                 {...item}
                                 {...context}
-                                onOpenRebus={() => context.openRebus(item)}
+                                onOpenRebus={()=>context.openRebus(item)}
                                 key={item.id} />
                         ))}
                     </div>

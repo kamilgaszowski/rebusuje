@@ -13,20 +13,21 @@ const Menu = (props) => (
                 </NavLink>
             </li>
             <div className={styles.container}>
+
                 <li className={styles.nav_item}>
                     <NavLink exact to="/gallery" onClick={props.onCloseRebus}>
-                        {/* <img src='https://i.postimg.cc/15X9wTT8/menu.png' alt='home' /> */}
-                        <p>Galeria</p>
+                        <img src='https://i.postimg.cc/15X9wTT8/menu.png' alt='home' />
                     </NavLink>
                 </li>
                 <li className={styles.nav_item}>
                     <NavLink to="/contact" onClick={props.onCloseRebus}>
-                        {/* <img src='https://i.postimg.cc/2yx4bcQD/baseline-alternate-email-black-48dp.png' alt='home' /> */}
-                        <p>Kontakt</p>
+                        <img src='https://i.postimg.cc/2yx4bcQD/baseline-alternate-email-black-48dp.png' alt='home' />
                     </NavLink>
                 </li>
+
+
             </div>
-        </ul>
+            </ul>
 
     </nav>
 );

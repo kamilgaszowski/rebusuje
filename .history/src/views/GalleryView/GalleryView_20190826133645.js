@@ -10,6 +10,7 @@ const GalleryView = () => {
         <AppContex.Consumer>
             {context => (
                 <>
+
                     <div className={styles.wrapper}>
                         {context.items.map(item => (
                             <Image

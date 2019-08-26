@@ -1,21 +1,18 @@
 .menu {
-    margin: 0;
     position: fixed;
     width: 100vw;
-    height: 70px;
-    top: 0;
+    top: 10px;
+    left: -35px;
     display: flex;
-    background: #fff;
-    justify-content: space-between;
-    align-items: flex-end;
+    background: none;
+    justify-content: flex-end;
+    align-items: flex-start;
     flex-wrap: nowrap;
     list-style: none;
-
     z-index: 1;
     border-bottom: 1px solid #000;
 
     .nav_item {
-        margin: 0 20px 0;
         list-style: none;
         display: flex;
         align-items: center;
@@ -26,21 +23,11 @@
         border-radius: 50%;
         border: none;
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
          img {
-             width: auto;
-             height: 55px;
+             width: 35px;
+             height: 35px;
          }
     }
-
-}
-
-.container {
-    display: flex;
 }
 
 

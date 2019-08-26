@@ -10,7 +10,6 @@
     align-items: flex-end;
     flex-wrap: nowrap;
     list-style: none;
-
     z-index: 1;
     border-bottom: 1px solid #000;
 
@@ -26,14 +25,9 @@
         border-radius: 50%;
         border: none;
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
          img {
              width: auto;
-             height: 55px;
+             height: 35px;
          }
     }
 

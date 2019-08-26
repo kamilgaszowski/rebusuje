@@ -47,6 +47,12 @@ const ImagesModal = ({
         <div className={styles.container}>
             <div className={styles.notes} onClick={onOpenNotes}><img src={'https://i.postimg.cc/c177bHVb/baseline-note-add-black-48dp.png'} alt='' /></div>
 
+
+            <div className={styles.sygnature}>
+                <img src='https://i.postimg.cc/WzRcNw2V/mis.png' alt='' />
+            </div>
+
+            <Notes {...props} />
             <div className={styles.wrapper}>
 
                 <div className={styles.border}>
@@ -88,7 +94,6 @@ const ImagesModal = ({
                     </form>
                 </div>
             </div>
-            <Notes {...props} />
         </div>
     )
 };
