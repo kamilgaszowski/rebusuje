@@ -1,0 +1,62 @@
+$shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
+
+.hidden {
+  margin: 50px 0;
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vmin;
+  background: transparent;
+  top: 0;
+  right: 20px;
+  z-index: 3;
+}
+
+.show{
+  @extend .hidden;
+
+  opacity: 1;
+
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: move;
+  color: #000;
+}
+.header {
+  margin: 10px 0 5px;
+}
+
+.form_notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.notes {
+  width: 30vmin;
+  height: 30vmin;
+  padding: 0;
+  margin-bottom: 30px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-family: inherit;
+  outline: none;
+  text-transform: uppercase;
+  box-shadow: $shadow;
+
+}
+
+
