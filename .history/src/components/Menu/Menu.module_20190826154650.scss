@@ -27,8 +27,8 @@ $shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         background: transparent;
         border: none;
 
@@ -40,8 +40,7 @@ $shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
 
     .active {
         @extend .nav_item;
-
-        border-bottom: 1px solid red;
+        border-bottom: 2px solid red;
     }
 }
 

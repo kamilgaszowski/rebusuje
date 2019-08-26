@@ -15,8 +15,8 @@ const Menu = (props) => (
             <div className={styles.container}>
                 <li>
                     <NavLink
-                        activeClassName={styles.active}
                         className={styles.nav_item}
+                        activeClassName={styles.active}
                         exact to="/gallery"
                         onClick={props.onCloseRebus}>
                         {/* <img src='https://i.postimg.cc/15X9wTT8/menu.png' alt='home' /> */}
@@ -25,8 +25,8 @@ const Menu = (props) => (
                 </li>
                 <li>
                     <NavLink
-                        activeClassName={styles.active}
                         className={styles.nav_item}
+                        activeClassName={styles.active}
                         to="/contact"
                         onClick={props.onCloseRebus}>
                         {/* <img src='https://i.postimg.cc/2yx4bcQD/baseline-alternate-email-black-48dp.png' alt='home' /> */}
