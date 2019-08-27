@@ -25,6 +25,7 @@ class Root extends React.Component {
         value: '',
         nextRebus: rebuses[1],
         prevRebus: null,
+        notes: '',
     };
 
 

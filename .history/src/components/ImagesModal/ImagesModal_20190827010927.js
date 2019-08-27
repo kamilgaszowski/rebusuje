@@ -23,6 +23,7 @@ const ImagesModal = ({
     src,
     value,
     name,
+    onCloseNotes,
     onOpenNotes,
     handleNextRebus,
     handlePrevRebus,
@@ -34,6 +35,7 @@ const ImagesModal = ({
     const props = {
         value,
         notes,
+        onCloseNotes,
         onHandleChange,
         checkAnswer,
         onMouseDown,
@@ -80,7 +82,7 @@ const ImagesModal = ({
                                         <CancelIcon className={styles.wrong} />)}
 
                         </div>
-                        <Button value={'sprawdź'} type={'submit'}/>
+                        <Button value={'sprawdź'} type={'subtmi'}/>
 
                     </form>
                 </div>

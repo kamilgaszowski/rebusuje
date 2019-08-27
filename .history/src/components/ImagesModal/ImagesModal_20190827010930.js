@@ -23,6 +23,7 @@ const ImagesModal = ({
     src,
     value,
     name,
+    onCloseNotes,
     onOpenNotes,
     handleNextRebus,
     handlePrevRebus,
@@ -34,6 +35,7 @@ const ImagesModal = ({
     const props = {
         value,
         notes,
+        onCloseNotes,
         onHandleChange,
         checkAnswer,
         onMouseDown,

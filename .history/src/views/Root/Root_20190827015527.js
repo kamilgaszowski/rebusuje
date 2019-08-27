@@ -25,6 +25,7 @@ class Root extends React.Component {
         value: '',
         nextRebus: rebuses[1],
         prevRebus: null,
+        notes: '',
     };
 
 
@@ -110,6 +111,9 @@ class Root extends React.Component {
     onMouseDown = (e) => { e.stopPropagation() }
 
     onOpenNotes = () => {
+        this.setState({
+            notes: '',
+        });
         this.setState(prevState => ({
 
             isNotes: !prevState.isNotes,
