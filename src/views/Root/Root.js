@@ -22,7 +22,9 @@ class Root extends React.Component {
         isRightAnswer: false,
         isWrongAnswer: false,
         isNotes: false,
-        value: '',
+        value: [],
+        letter: [],
+        emptyValue : '',
         nextRebus: rebuses[1],
         prevRebus: null,
     };
@@ -78,17 +80,28 @@ class Root extends React.Component {
             isRightAnswer: false,
             isNotes: false,
         }, () => this.getDataFromRebus());
+
     }
 
 
+    inputs = React.createRef();
 
 
     handleChange = (e) => {
-        this.setState({
-            value: e.target.value.toLowerCase()
-        });
 
+        const input = this.inputs.current.childNodes;
+        let inputs = [];
+        input.forEach(item => {
+            inputs.push(item.value)
+            if(item.value.length > 0 && item.nextSibling) {
+                item.nextSibling.focus();
+            }
+        })
+        this.setState({
+            value: inputs.join('').toLocaleLowerCase(),
+        });
     }
+
 
     checkAnswer = (e) => {
         e.preventDefault();
@@ -114,12 +127,14 @@ class Root extends React.Component {
         }));
     }
 
+
     mini = (e) => {
         this.setState({
             rebus: e,
         }, () => this.getDataFromRebus())
-       console.log(this.state.prevRebus)
     }
+
+
 
     render() {
         const {
@@ -137,6 +152,7 @@ class Root extends React.Component {
             nextRebus: this.state.nextRebus,
             prevRebus: this.state.prevRebus,
             mini: this.mini,
+            myRef: this.myRef,
         }
 
         return (<AppContex.Provider value={context} >
@@ -156,12 +172,13 @@ class Root extends React.Component {
                             onOpenNotes={this.onOpenNotes}
                             onMouseDown={this.onMouseDown}
                             closeRebus={this.closeRebus}
+                            inputs={this.inputs}
                         />
                     }
                     <Route exact path='/'
                         component={Hero}
                         {...this.state}
-                        />
+                    />
                     <Route exact path='/gallery' component={GalleryView} />
                     <Route exact path='/contact' component={ContactView} />
                 </AnimatedSwitch>
