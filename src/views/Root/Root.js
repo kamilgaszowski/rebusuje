@@ -117,8 +117,8 @@ class Root extends React.Component {
     mini = (e) => {
         this.setState({
             rebus: e,
-        })
-       console.log(e)
+        }, () => this.getDataFromRebus())
+       console.log(this.state.prevRebus)
     }
 
     render() {
