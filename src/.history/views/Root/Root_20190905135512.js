@@ -104,15 +104,6 @@ class Root extends React.Component {
     }
 
 
-    onKeyPress = (e) => {
-        const input = this.inputs.current.childNodes;
-        input.forEach(item => {
-            if (e.keyCode === 8 && item.previousSibling && item.previousSibling.value.length > 0 ) {
-                item.previousSibling.focus();
-                console.log('dupa')
-               }
-        })
-    }
 
     handleChange = (e) => {
 
@@ -120,17 +111,15 @@ class Root extends React.Component {
         let inputs = [];
         input.forEach(item => {
             inputs.push(item.value)
-            if (item.value.length > 0  && item.nextSibling && item.nextSibling.value === '' ) {
+            if (item.value.length > 0 && item.nextSibling) {
                 item.nextSibling.focus();
-
             }
-
         })
 
         this.setState({
             letter: inputs,
             value: inputs.join('').toLowerCase(),
-        });
+        }, () => console.log(this.state.letter));
     }
 
 
@@ -202,7 +191,6 @@ class Root extends React.Component {
                             onMouseDown={this.onMouseDown}
                             closeRebus={this.closeRebus}
                             inputs={this.inputs}
-                            onKeyPress={this.onKeyPress}
                         />
                     }
                     <Route exact path='/'

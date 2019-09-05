@@ -14,7 +14,6 @@ const Input = ({
     inputs,
     letter,
     name,
-    onKeyPress,
 }) => {
     const hiddenName = name.split('');
 
@@ -31,7 +30,7 @@ const Input = ({
                         placeholder={index + 1}
                         onChange={onHandleChange}
                         className={styles.input}
-                        onKeyUp={onKeyPress}
+                        onKeyPress={onHandleChange}
                         type='text'
                         autoComplete='off'
                         maxLength='1'
