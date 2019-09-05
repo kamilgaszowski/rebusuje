@@ -107,10 +107,15 @@ class Root extends React.Component {
     onKeyPress = (e) => {
         const input = this.inputs.current.childNodes;
         input.forEach(item => {
-            if (e.keyCode === 8 && item.previousSibling && item.previousSibling.value.length > 0 ) {
+
+            if (
+                item.value.length === 0 &&
+                e.keyCode === 8 &&
+                item.previousSibling &&
+                item.previousSibling.value.length > 0
+            ) {
                 item.previousSibling.focus();
-                console.log('dupa')
-               }
+            }
         })
     }
 
@@ -120,7 +125,7 @@ class Root extends React.Component {
         let inputs = [];
         input.forEach(item => {
             inputs.push(item.value)
-            if (item.value.length > 0  && item.nextSibling && item.nextSibling.value === '' ) {
+            if (item.value.length > 0 && item.nextSibling && item.nextSibling.value === '') {
                 item.nextSibling.focus();
 
             }

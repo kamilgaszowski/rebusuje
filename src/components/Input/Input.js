@@ -12,6 +12,7 @@ const Input = ({
     checkAnswer,
     onHandleChange,
     inputs,
+    onFocusInput,
     letter,
     name,
     onKeyPress,
@@ -31,7 +32,7 @@ const Input = ({
                         placeholder={index + 1}
                         onChange={onHandleChange}
                         className={styles.input}
-                        onKeyUp={onKeyPress}
+                        onKeyDown={onKeyPress}
                         type='text'
                         autoComplete='off'
                         maxLength='1'
