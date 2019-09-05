@@ -59,12 +59,17 @@ class Root extends React.Component {
     }
 
     getDataFromRebus = () => {
-
+        // const input = this.inputs.current.childNodes;
+        // const inputs = [];
+        // input.forEach(item => {
+        //     item.value = ''
+        //     inputs.push(item.value)
+        // })
 
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
         this.setState({
-
+            // letter: inputs,
             nextRebus: nextRebus[0],
             prevRebus: prevRebus[0],
         });
@@ -82,9 +87,7 @@ class Root extends React.Component {
             letter: inputs,
         });
     }
-
     handleNextRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.nextRebus,
             isWrongAnswer: false,
@@ -94,7 +97,6 @@ class Root extends React.Component {
     }
 
     handlePrevRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.prevRebus,
             isWrongAnswer: false,

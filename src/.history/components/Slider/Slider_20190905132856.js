@@ -26,7 +26,7 @@ const Slider = ({ ...props }) => {
                 )}
             <div className={styles.rebus}>
                 <img src={props.src} alt={props.id} />
-
+                <Input {...this.props} />
             </div>
         </div >
     )

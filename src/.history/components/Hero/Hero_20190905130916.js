@@ -7,9 +7,7 @@ import SliderMiniature from '../Slider/SliderMiniature';
 
 const Hero = () => {
 
-
     return (
-        <>
         <AppContext.Consumer>
             {context => (
                 <header className={styles.wrapper}>
@@ -24,7 +22,6 @@ const Hero = () => {
                 </header>
             )}
         </AppContext.Consumer>
-         </>
 
     )
 

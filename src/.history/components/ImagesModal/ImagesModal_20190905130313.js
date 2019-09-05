@@ -18,6 +18,7 @@ class ImagesModal extends React.Component {
     render() {
         const {
             id,
+            name,
             onOpenNotes,
             closeRebus,
         } = this.props

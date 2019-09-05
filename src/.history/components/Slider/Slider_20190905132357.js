@@ -3,7 +3,6 @@ import styles from './Slider.module.scss';
 
 import ArrowForwardIosSharpIcon from '@material-ui/icons/ArrowForwardIosSharp';
 import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
-import Input from '../Input/Input';
 
 
 
@@ -26,7 +25,6 @@ const Slider = ({ ...props }) => {
                 )}
             <div className={styles.rebus}>
                 <img src={props.src} alt={props.id} />
-
             </div>
         </div >
     )

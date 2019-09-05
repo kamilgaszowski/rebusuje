@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './SliderMiniature.module.scss';
 
 
-const SliderMiniature = ({ items, mini }) => (
+const SliderMiniature = ({ items, mini, myRef }) => (
     <>
         <div className={styles.wrapper}>
             {items.map(item => (
-                <div  className={styles.mini_rebus} onClick={() => mini(item)} >
+                <div ref={myRef} className={styles.mini_rebus} onClick={() => mini(item)} >
                     <img src={item.src} alt={item.id}
                         key={item.id} />
                 </div>

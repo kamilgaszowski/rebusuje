@@ -59,7 +59,7 @@ class Root extends React.Component {
     }
 
     getDataFromRebus = () => {
-
+        this.clearInputs();
 
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
@@ -84,7 +84,6 @@ class Root extends React.Component {
     }
 
     handleNextRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.nextRebus,
             isWrongAnswer: false,
@@ -94,7 +93,6 @@ class Root extends React.Component {
     }
 
     handlePrevRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.prevRebus,
             isWrongAnswer: false,

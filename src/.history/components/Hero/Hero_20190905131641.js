@@ -4,6 +4,7 @@ import styles from './Hero.module.scss';
 import Slider from '../Slider/Slider';
 import AppContext from '../../contex';
 import SliderMiniature from '../Slider/SliderMiniature';
+import Input from '../Input/Input';
 
 const Hero = () => {
 

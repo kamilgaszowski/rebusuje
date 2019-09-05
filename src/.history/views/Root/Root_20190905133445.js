@@ -84,7 +84,7 @@ class Root extends React.Component {
     }
 
     handleNextRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
+        this.clearInputs();
         this.setState({
             rebus: this.state.nextRebus,
             isWrongAnswer: false,
@@ -94,7 +94,7 @@ class Root extends React.Component {
     }
 
     handlePrevRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
+        this.clearInputs();
         this.setState({
             rebus: this.state.prevRebus,
             isWrongAnswer: false,

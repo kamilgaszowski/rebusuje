@@ -4,12 +4,11 @@ import styles from './Hero.module.scss';
 import Slider from '../Slider/Slider';
 import AppContext from '../../contex';
 import SliderMiniature from '../Slider/SliderMiniature';
+import Input from '../Input/Input';
 
-const Hero = () => {
-
+const Hero = ({...props}) => {
 
     return (
-        <>
         <AppContext.Consumer>
             {context => (
                 <header className={styles.wrapper}>
@@ -18,13 +17,12 @@ const Hero = () => {
                             {...context.rebus}
                             {...context} />
                         <SliderMiniature {...context}/>
-
+                        <Input {...this.props}/>
                         <button className={styles.btn} type='button' onClick={()=> context.firstRebus(context.rebus)}>rozwiąż ten rebus</button>
                     </div>
                 </header>
             )}
         </AppContext.Consumer>
-         </>
 
     )
 

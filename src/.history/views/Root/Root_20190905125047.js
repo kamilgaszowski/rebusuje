@@ -64,37 +64,22 @@ class Root extends React.Component {
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
         this.setState({
-
             nextRebus: nextRebus[0],
             prevRebus: prevRebus[0],
         });
     }
 
-    clearInputs = () => {
-        const input = this.inputs.current.childNodes;
-        const inputs = [];
-        input.forEach(item => {
-            item.value = ''
-            inputs.push(item.value)
-        })
-
-        this.setState({
-            letter: inputs,
-        });
-    }
-
     handleNextRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.nextRebus,
             isWrongAnswer: false,
             isRightAnswer: false,
             isNotes: false,
         }, () => this.getDataFromRebus());
+       console.log(this.state.letter)
     }
 
     handlePrevRebus = () => {
-        this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.prevRebus,
             isWrongAnswer: false,
@@ -126,10 +111,17 @@ class Root extends React.Component {
 
     checkAnswer = (e) => {
         e.preventDefault();
+        const input = this.inputs.current.childNodes;
+        const inputs = [];
+        input.forEach(item => {
+            item.value = ''
+            inputs.push(item.value)
+        })
 
         this.state.value === this.state.rebus.name
             ?
             this.setState({
+                letter: inputs,
                 isRightAnswer: true,
                 isWrongAnswer: false,
             })
@@ -172,6 +164,7 @@ class Root extends React.Component {
             nextRebus: this.state.nextRebus,
             prevRebus: this.state.prevRebus,
             mini: this.mini,
+            myRef: this.myRef,
         }
 
         return (<AppContex.Provider value={context} >
