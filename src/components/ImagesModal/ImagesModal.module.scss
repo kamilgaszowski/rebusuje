@@ -37,13 +37,12 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
 
     .add_note {
       width: 50px;
-      height: 50px
+      height: 50px;
     }
   }
 }
 
 .wrapper {
-
   height: 100%;
   margin: 10px auto;
   display: flex;
@@ -109,9 +108,8 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     width: 30px;
     height: 30px;
     cursor: pointer;
-    z-index: 5;
+    z-index: 3;
   }
-
 }
 
 .form {
@@ -131,24 +129,23 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     justify-content: center;
     align-items: center;
 
-  .icon {
-    margin: 10px;
-    opacity: 1;
-    color:  transparent;
-    width: 40px;
-    height: 40px;
-    transition: color .5s linear;
-  }
+    .icon {
+      margin: 10px;
+      opacity: 1;
+      color: transparent;
+      width: 40px;
+      height: 40px;
+      transition: color 0.5s linear;
+    }
     .right {
       @extend .icon;
-      color:  #51cc51;
+      color: #51cc51;
     }
 
     .wrong {
       @extend .icon;
-      color:  #c74040;
+      color: #c74040;
     }
-
   }
 }
 .inputs {
@@ -179,13 +176,12 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     border-bottom: 0.5px solid #000;
   }
 
-  &::placeholder{
-    opacity: .3;
+  &::placeholder {
+    opacity: 0.3;
   }
-
 }
 
-.input_right{
+.input_right {
   @extend .input;
   background: rgba(95, 248, 102, 0.1);
 
@@ -197,7 +193,7 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
   }
 }
 
-.input_wrong{
+.input_wrong {
   @extend .input;
   background: rgba(248, 95, 95, 0.1);
 
@@ -207,10 +203,4 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     border: none;
     border-bottom: 0.5px solid #000;
   }
-
-
 }
-
-
-
-

@@ -4,7 +4,7 @@ import Draggable from 'react-draggable';
 // import Button from '../Button/Button';
 
 
-const Notes = ({ onMouseDown, isNotes}) => (
+const Notes = ({ onMouseDown, isNotes }) => (
 
     <div className={isNotes ? styles.show : styles.hidden}>
         <Draggable>
