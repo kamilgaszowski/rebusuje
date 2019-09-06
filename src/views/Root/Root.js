@@ -59,8 +59,6 @@ class Root extends React.Component {
     }
 
     getDataFromRebus = () => {
-
-
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
         this.setState({
@@ -104,20 +102,6 @@ class Root extends React.Component {
     }
 
 
-    onKeyPress = (e) => {
-        const input = this.inputs.current.childNodes;
-        input.forEach(item => {
-
-            if (
-                item.value.length === 0 &&
-                e.keyCode === 8 &&
-                item.previousSibling &&
-                item.previousSibling.value.length > 0
-            ) {
-                item.previousSibling.focus();
-            }
-        })
-    }
 
     handleChange = (e) => {
 
@@ -125,11 +109,17 @@ class Root extends React.Component {
         let inputs = [];
         input.forEach(item => {
             inputs.push(item.value)
-            if (item.value.length > 0 && item.nextSibling && item.nextSibling.value === '') {
+            if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
                 item.nextSibling.focus();
-
             }
 
+
+            if (
+                item.value.length === 0 &&
+                e.keyCode === 8 &&
+                item.previousSibling &&
+                item.previousSibling.value.length > 0
+            ) { item.previousSibling.focus() }
         })
 
         this.setState({
@@ -141,7 +131,6 @@ class Root extends React.Component {
 
     checkAnswer = (e) => {
         e.preventDefault();
-
         this.state.value === this.state.rebus.name
             ?
             this.setState({
@@ -154,7 +143,6 @@ class Root extends React.Component {
                 isWrongAnswer: true,
             })
     }
-
     onMouseDown = (e) => { e.stopPropagation() }
 
     onOpenNotes = () => {
@@ -207,7 +195,6 @@ class Root extends React.Component {
                             onMouseDown={this.onMouseDown}
                             closeRebus={this.closeRebus}
                             inputs={this.inputs}
-                            onKeyPress={this.onKeyPress}
                         />
                     }
                     <Route exact path='/'
