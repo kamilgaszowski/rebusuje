@@ -9,20 +9,14 @@ const ContactView = () => (
         <h2 className={styles.title}>Jarek Miś</h2>
         <p>Napisz do mnie:</p>
         <p>J.mis@outlook.com</p>
-        <form name="contact" method="POST" data-netlify="true">
-            <p>
-                <label>Your Name: <input type="text" name="name" /></label>
-            </p>
-            <p>
-                <label>Your Email: <input type="email" name="email" /></label>
-            </p>
-
-            <p>
-                <label>Message: <textarea name="message"></textarea></label>
-            </p>
-            <p>
-                <button type="submit">Send</button>
-            </p>
+        <form action="https://formspree.io/kamil.gaszowski@gmail.com" method="POST">
+            <label>Imię:</label>
+            <input type="text" name="name" />
+            <label>Twój imejl:</label>
+            <input type="email" name="_replyto" />
+            <label>Twoja wiadomość:</label>
+            <textarea type='text' name='message'/>
+            <input type="submit" value="Send" />
         </form>
     </div>
 );
