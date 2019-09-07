@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
+import BackspaceIcon from '@material-ui/icons/Backspace';
 
 
 const Input = ({
@@ -12,10 +13,9 @@ const Input = ({
     checkAnswer,
     onHandleChange,
     inputs,
-    onFocusInput,
     letter,
     name,
-    onKeyPress,
+    clearInputs,
 }) => {
     const hiddenName = name.split('');
 
@@ -50,6 +50,7 @@ const Input = ({
 
             </div>
             <Button value={'sprawdź'} type={'submit'} />
+            <BackspaceIcon className={styles.clear} onClick={()=>clearInputs()}/>
 
         </form>
     )

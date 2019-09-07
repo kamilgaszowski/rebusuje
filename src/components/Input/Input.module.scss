@@ -8,12 +8,11 @@
     flex-wrap: wrap;
 
     .check {
-      display: flex;
+
       position: absolute;
-      bottom: 70px;
-      right: -70px;
-      justify-content: center;
-      align-items: center;
+      bottom: 60px;
+      right: -100px;
+
 
       .icon {
         margin: 10px;
@@ -89,4 +88,11 @@
       border: none;
       border-bottom: 0.5px solid #000;
     }
+  }
+
+  .clear {
+    position: absolute;
+    bottom: 80px;
+    right: -30px;
+    cursor: pointer;
   }

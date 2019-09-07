@@ -27,17 +27,19 @@ class Root extends React.Component {
         emptyValue: '',
         nextRebus: rebuses[1],
         prevRebus: null,
+
     };
 
     inputs = React.createRef();
 
     openRebus = (e) => {
+
         this.setState({
             letter: [],
-            value: [],
             rebus: e,
             isOpenRebus: true,
         }, () => this.getDataFromRebus());
+
     }
 
     firstRebus = (e) => {
@@ -62,26 +64,30 @@ class Root extends React.Component {
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
         this.setState({
-
+            value: [],
             nextRebus: nextRebus[0],
             prevRebus: prevRebus[0],
         });
     }
 
     clearInputs = () => {
+
         const input = this.inputs.current.childNodes;
         const inputs = [];
+        this.state.value.length >= 1 && input[0].focus();
         input.forEach(item => {
-            item.value = ''
-            inputs.push(item.value)
+            item.value = '';
+            inputs.push(item.value);
         })
+
 
         this.setState({
             letter: inputs,
-        });
+        }, ()=>console.log(this.state.value));
     }
 
     handleNextRebus = () => {
+        this.getDataFromRebus()
         this.state.isOpenRebus && this.clearInputs();
         this.setState({
             rebus: this.state.nextRebus,
@@ -112,7 +118,6 @@ class Root extends React.Component {
             if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
                 item.nextSibling.focus();
             }
-
 
             if (
                 item.value.length === 0 &&
@@ -195,6 +200,7 @@ class Root extends React.Component {
                             onMouseDown={this.onMouseDown}
                             closeRebus={this.closeRebus}
                             inputs={this.inputs}
+                            clearInputs={this.clearInputs}
                         />
                     }
                     <Route exact path='/'

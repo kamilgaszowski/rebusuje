@@ -8,7 +8,7 @@ const ContactView = () => (
         <Logo />
         <h2 className={styles.title}>Jarek Miś</h2>
         <p>Napisz do mnie:</p>
-        <p mailto='J.mis@outlook.com'>J.mis@outlook.com</p>
+        <a href='mailto:J.mis@outlook.com'>J.mis@outlook.com</a>
 
     </div>
 );
