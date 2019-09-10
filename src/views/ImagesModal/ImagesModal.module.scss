@@ -14,7 +14,7 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
 .container {
   margin: 50px 0 0;
   animation-name: open;
-  animation-duration: 1.5s;
+  animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
   display: flex;
   flex-direction: column;
@@ -43,8 +43,9 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
 }
 
 .wrapper {
+
   height: 100%;
-  margin: 10px auto;
+  margin: 60px auto;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -66,6 +67,7 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
   }
 
   .border {
+
     position: relative;
     display: flex;
     margin: 30px auto;
@@ -88,18 +90,34 @@ $shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.23);
     .title {
       @extend .titles;
       right: 0;
-      transition: all 0.5s ease-in-out;
+      background: #fff;
+      transition: opacity 0.5s ease-in-out;
     }
 
     .title_hidden {
       @extend .title;
-      opacity: 0;
+      letter-spacing: 10px;
+      opacity: 0.2;
     }
   }
 
   .close {
     position: absolute;
     top: -5px;
+    right: 0px;
+    background: #000;
+    color: #fff;
+    outline: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .question {
+    position: absolute;
+    bottom: 200px;
     right: 0px;
     background: #000;
     color: #fff;

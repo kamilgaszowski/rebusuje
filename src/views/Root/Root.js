@@ -28,6 +28,10 @@ class Root extends React.Component {
         nextRebus: rebuses[1],
         prevRebus: null,
 
+        buttonClick: 0,
+        checkAnswer: false,
+        answer: [],
+
     };
 
     inputs = React.createRef();
@@ -35,6 +39,9 @@ class Root extends React.Component {
     openRebus = (e) => {
 
         this.setState({
+            buttonClick: 0,
+            checkAnswer: false,
+            answer: [],
             letter: [],
             rebus: e,
             isOpenRebus: true,
@@ -44,6 +51,9 @@ class Root extends React.Component {
 
     firstRebus = (e) => {
         this.setState({
+            buttonClick: 0,
+            checkAnswer: false,
+            answer: [],
             letter: [],
             rebus: e,
             isOpenRebus: true,
@@ -52,6 +62,9 @@ class Root extends React.Component {
 
     closeRebus = () => {
         this.setState({
+            buttonClick: 0,
+            checkAnswer: false,
+            answer: [],
             letter: [],
             rebus: rebuses[0],
             isOpenRebus: false,
@@ -64,6 +77,9 @@ class Root extends React.Component {
         const nextRebus = this.state.items.filter(item => item.id === this.state.rebus.id + 1);
         const prevRebus = this.state.items.filter(item => item.id === this.state.rebus.id - 1);
         this.setState({
+            buttonClick: 0,
+            checkAnswer: false,
+            answer: [],
             value: [],
             nextRebus: nextRebus[0],
             prevRebus: prevRebus[0],
@@ -163,6 +179,32 @@ class Root extends React.Component {
         }, () => this.getDataFromRebus())
     }
 
+    hint = () => {
+        const visibleName = this.state.rebus.name.split('');
+        const hint = []
+
+        this.setState({
+            checkAnswer: true,
+        })
+
+        visibleName.forEach((item, index) => {
+            if (this.state.buttonClick === index) {
+                hint.push(item)
+                index++
+
+                this.setState(prevState => ({
+                    buttonClick: prevState.buttonClick + 1,
+                }))
+            }
+        })
+
+        this.setState(prevState => ({
+            answer: [prevState.answer + hint],
+        }))
+    }
+
+
+
 
     render() {
         const {
@@ -201,6 +243,7 @@ class Root extends React.Component {
                             closeRebus={this.closeRebus}
                             inputs={this.inputs}
                             clearInputs={this.clearInputs}
+                            hint={this.hint}
                         />
                     }
                     <Route exact path='/'
