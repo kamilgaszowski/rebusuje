@@ -30,9 +30,9 @@ const Input = ({
                     <input
                         value={letter[index]}
                         placeholder={index + 1}
-                        onChange={onHandleChange}
+                        onChange={e => onHandleChange(e, index)}
                         className={styles.input}
-                        onKeyDown={onHandleChange}
+                        onKeyDown={e => onHandleChange(e, index)}
                         type='text'
                         autoComplete='off'
                         maxLength='1'

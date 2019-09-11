@@ -12,6 +12,7 @@ import GalleryView from '../GalleryView/GalleryView';
 import ContactView from '../ContactView/ContactView'
 import ImagesModal from '../ImagesModal/ImagesModal';
 import Hero from '../../components/Hero/Hero';
+import { number } from 'prop-types';
 
 
 class Root extends React.Component {
@@ -33,9 +34,11 @@ class Root extends React.Component {
         answer: [],
         addLetter: [],
 
+        thumbnail: 0,
     };
 
     inputs = React.createRef();
+    miniatures = React.createRef();
 
     openRebus = (e) => {
 
@@ -71,6 +74,7 @@ class Root extends React.Component {
             isOpenRebus: false,
             isAnswer: false,
             isNotes: false,
+            thumbnail: 0,
         }, () => this.getDataFromRebus());
     }
 
@@ -107,14 +111,18 @@ class Root extends React.Component {
     }
 
     handleNextRebus = () => {
+        
         this.getDataFromRebus()
         this.state.isOpenRebus && this.clearInputs();
         this.setState({
+
             rebus: this.state.nextRebus,
             isWrongAnswer: false,
             isRightAnswer: false,
             isNotes: false,
+            thumbnail: this.state.nextRebus.id,
         }, () => this.getDataFromRebus());
+        console.log(this.state.thumbnail)
     }
 
     handlePrevRebus = () => {
@@ -124,27 +132,42 @@ class Root extends React.Component {
             isWrongAnswer: false,
             isRightAnswer: false,
             isNotes: false,
+            thumbnail: this.state.prevRebus.id,
         }, () => this.getDataFromRebus());
     }
 
 
 
-    handleChange = (e) => {
+    handleChange = (e, index) => {
+        const backspace = 8;
+        const left = 37;
+        const right = 39;
 
         const input = this.inputs.current.childNodes;
         let inputs = [];
+
         input.forEach(item => {
             inputs.push(item.value)
-            if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
-                item.nextSibling.focus();
-            }
-            if (
-                item.value.length === 0 &&
-                e.keyCode === 8 &&
-                item.previousSibling &&
-                item.previousSibling.value.length > 0
-            ) { item.previousSibling.focus() }
+
         })
+        const item = input[index];
+        if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
+            item.nextSibling.focus();
+        } else if (
+            item.value.length === 0 &&
+            e.keyCode === backspace &&
+            item.previousSibling &&
+            item.previousSibling.value.length >= 0
+        ) {
+            item.previousSibling.focus()
+        } else if (e.keyCode === right &&
+            item.nextSibling) {
+            item.nextSibling.focus();
+        } else if (e.keyCode === left &&
+            item.previousSibling) {
+            item.previousSibling.focus();
+        }
+
         this.setState(prevState => ({
             letter: prevState.letter, inputs,
             value: inputs.join('').toLowerCase(),
@@ -183,7 +206,7 @@ class Root extends React.Component {
         }, () => this.getDataFromRebus())
     }
 
-    getHint = () => {
+    setHint = () => {
         const input = this.inputs.current.childNodes;
         input.forEach(item => {
             if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
@@ -207,20 +230,66 @@ class Root extends React.Component {
             checkAnswer: true,
         })
         visibleName.forEach((item, index) => {
-            if (this.state.buttonClick === index) {
 
+            if (this.state.buttonClick === index)  {
                 hint.push(item)
-
                 index++
-
                 this.setState(prevState => ({
                     addLetter: item,
                     buttonClick: prevState.buttonClick + 1,
-                }), () => this.getHint())
+                }), () => this.setHint())
 
             }
         })
+    }
 
+
+    nextThumbnails = (e) => {
+        const slider = this.miniatures.current.childNodes;
+        slider.forEach((item, index) => {
+            if (this.state.thumbnail === 0){
+                this.setState({
+                    thumbnail: 4,
+                })
+                ++index
+            } else if (this.state.thumbnail === index) {
+
+                console.log(slider[index])
+                this.setState({
+                    thumbnail: ++index,
+                })
+                console.log(index)
+                this.state.thumbnail >= slider.length && this.setState({ thumbnail: slider.length })
+
+                ++index
+            }
+        })
+    }
+
+    prevThumbnails = (e) => {
+
+        const slider = this.miniatures.current.childNodes;
+
+        slider.forEach((item, index) => {
+            if (this.state.thumbnail === slider.length){
+                console.log(slider[index])
+                this.setState({
+                    thumbnail: slider.length - 5,
+                })
+            } else if (this.state.thumbnail === 0) {
+                console.log(slider[index])
+                this.setState({
+                    thumbnail: 4,
+                })
+            } else if (this.state.thumbnail === index) {
+                console.log(slider[index])
+                this.setState({
+                    thumbnail: --index,
+                })
+                --index
+                index <= 0 && this.setState({ thumbnail: 0 })
+            }
+        })
 
     }
 
@@ -243,43 +312,47 @@ class Root extends React.Component {
             nextRebus: this.state.nextRebus,
             prevRebus: this.state.prevRebus,
             miniSlider: this.miniSlider,
+            miniatures: this.miniatures,
+            nextThumbnails: this.nextThumbnails,
+            prevThumbnails: this.prevThumbnails,
+            thumbnail: this.state.thumbnail,
         }
 
         return (
 
-                <AppContex.Provider value={context} >
-                    <BrowserRouter >
-                        <Menu onCloseRebus={this.closeRebus} />
+            <AppContex.Provider value={context} >
+                <BrowserRouter >
+                    <Menu onCloseRebus={this.closeRebus} />
 
-                        <AnimatedSwitch
-                            atEnter={{ opacity: 0 }}
-                            atLeave={{ opacity: 0 }}
-                            atActive={{ opacity: 1 }} >
-                            {isOpenRebus &&
-                                <ImagesModal {...rebus} {...this.state}
-                                    onHandleChange={this.handleChange}
-                                    checkAnswer={this.checkAnswer}
-                                    handleNextRebus={this.handleNextRebus}
-                                    handlePrevRebus={this.handlePrevRebus}
-                                    onOpenNotes={this.onOpenNotes}
-                                    onMouseDown={this.onMouseDown}
-                                    closeRebus={this.closeRebus}
-                                    inputs={this.inputs}
-                                    clearInputs={this.clearInputs}
-                                    hint={this.hint}
-                                    firstRebus={this.firstRebus}
-                                />
-                            }
-                            <Route exact path='/'
-                                component={Hero}
-                                {...this.state}
+                    <AnimatedSwitch
+                        atEnter={{ opacity: 0 }}
+                        atLeave={{ opacity: 0 }}
+                        atActive={{ opacity: 1 }} >
+                        {isOpenRebus &&
+                            <ImagesModal {...rebus} {...this.state}
+                                onHandleChange={this.handleChange}
+                                checkAnswer={this.checkAnswer}
+                                handleNextRebus={this.handleNextRebus}
+                                handlePrevRebus={this.handlePrevRebus}
+                                onOpenNotes={this.onOpenNotes}
+                                onMouseDown={this.onMouseDown}
+                                closeRebus={this.closeRebus}
+                                inputs={this.inputs}
+                                clearInputs={this.clearInputs}
+                                hint={this.hint}
+                                firstRebus={this.firstRebus}
                             />
-                            <Route exact path='/gallery' component={GalleryView} />
-                            <Route exact path='/contact' component={ContactView} />
-                        </AnimatedSwitch>
-                    </BrowserRouter>
+                        }
+                        <Route exact path='/'
+                            component={Hero}
 
-                </AppContex.Provider>
+                        />
+                        <Route exact path='/gallery' component={GalleryView} />
+                        <Route exact path='/contact' component={ContactView} />
+                    </AnimatedSwitch>
+                </BrowserRouter>
+
+            </AppContex.Provider>
 
 
         );
