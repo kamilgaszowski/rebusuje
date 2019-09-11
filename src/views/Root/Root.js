@@ -31,6 +31,7 @@ class Root extends React.Component {
         buttonClick: 0,
         checkAnswer: false,
         answer: [],
+        addLetter: [],
 
     };
 
@@ -80,7 +81,9 @@ class Root extends React.Component {
             buttonClick: 0,
             checkAnswer: false,
             answer: [],
+            letter: [],
             value: [],
+            addLetter: [],
             nextRebus: nextRebus[0],
             prevRebus: prevRebus[0],
         });
@@ -95,11 +98,12 @@ class Root extends React.Component {
             item.value = '';
             inputs.push(item.value);
         })
-
-
         this.setState({
-            letter: inputs,
-        }, ()=>console.log(this.state.value));
+            buttonClick: 0,
+            value: [],
+            addLetter: [],
+            letter: [],
+        });
     }
 
     handleNextRebus = () => {
@@ -134,7 +138,6 @@ class Root extends React.Component {
             if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
                 item.nextSibling.focus();
             }
-
             if (
                 item.value.length === 0 &&
                 e.keyCode === 8 &&
@@ -142,11 +145,11 @@ class Root extends React.Component {
                 item.previousSibling.value.length > 0
             ) { item.previousSibling.focus() }
         })
-
-        this.setState({
-            letter: inputs,
+        this.setState(prevState => ({
+            letter: prevState.letter, inputs,
             value: inputs.join('').toLowerCase(),
-        });
+        }))
+
     }
 
 
@@ -164,6 +167,7 @@ class Root extends React.Component {
                 isWrongAnswer: true,
             })
     }
+
     onMouseDown = (e) => { e.stopPropagation() }
 
     onOpenNotes = () => {
@@ -173,37 +177,54 @@ class Root extends React.Component {
     }
 
 
-    mini = (e) => {
+    miniSlider = (e) => {
         this.setState({
             rebus: e,
         }, () => this.getDataFromRebus())
     }
 
+    getHint = () => {
+        const input = this.inputs.current.childNodes;
+        input.forEach(item => {
+            if (item.value.length > 0 && item.nextSibling && item.nextSibling.value.length === 0) {
+                item.nextSibling.focus();
+            }
+        })
+
+        this.setState(prevState => ({
+            letter: prevState.letter + this.state.addLetter,
+            value: prevState.value + this.state.addLetter,
+        }), () => console.log(this.state.value))
+
+    }
+
     hint = () => {
+
         const visibleName = this.state.rebus.name.split('');
         const hint = []
 
         this.setState({
             checkAnswer: true,
         })
-
         visibleName.forEach((item, index) => {
             if (this.state.buttonClick === index) {
+
                 hint.push(item)
+
                 index++
 
                 this.setState(prevState => ({
+                    addLetter: item,
                     buttonClick: prevState.buttonClick + 1,
-                }))
+                }), ()=> this.getHint())
+
             }
         })
 
-        this.setState(prevState => ({
-            answer: [prevState.answer + hint],
-        }))
+
     }
 
-
+    repeat = (string, times) => times > 0 ? string.repeat(times) : "";
 
 
     render() {
@@ -221,7 +242,7 @@ class Root extends React.Component {
             handlePrevRebus: this.handlePrevRebus,
             nextRebus: this.state.nextRebus,
             prevRebus: this.state.prevRebus,
-            mini: this.mini,
+            miniSlider: this.miniSlider,
         }
 
         return (<AppContex.Provider value={context} >
@@ -244,6 +265,7 @@ class Root extends React.Component {
                             inputs={this.inputs}
                             clearInputs={this.clearInputs}
                             hint={this.hint}
+                            repeat={this.repeat}
                         />
                     }
                     <Route exact path='/'

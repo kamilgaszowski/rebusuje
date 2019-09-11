@@ -14,8 +14,6 @@ import Input from '../../components/Input/Input';
 
 class ImagesModal extends React.Component {
 
-
-
     render() {
         const {
             id,
@@ -23,10 +21,11 @@ class ImagesModal extends React.Component {
             closeRebus,
             isRightAnswer,
             name,
+            value,
         } = this.props
 
-        const repeat = (string, times) => times > 0 ? string.repeat(times) : "";
-        const hiddenName = repeat('*', name.length);
+
+
 
         return (
             <div className={styles.container}>
@@ -40,9 +39,8 @@ class ImagesModal extends React.Component {
                         <HelpIcon className={styles.question} onClick={() => this.props.hint()}>podpowiedź</HelpIcon>
 
                         {this.props.checkAnswer && <p className={styles.title}>{this.props.answer}</p>}
-                        {this.props.buttonClick ===  0 &&<p className={styles.title_hidden}>{hiddenName}</p>}
 
-                        {isRightAnswer && <p className={styles.title}>{name}</p>}
+                        {/* {( isRightAnswer ) ? <p className={styles.title}>{name}</p> : null} */}
                         <p className={styles.title_hash}>#{id}</p>
                         <CancelIcon className={styles.close} onClick={closeRebus}>X</CancelIcon>
                         <Slider {...this.props} />
