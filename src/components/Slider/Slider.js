@@ -23,7 +23,7 @@ const Slider = ({ ...props }) => {
                         <ArrowForwardIosSharpIcon className={styles.next_arrow} />
                     </button>
                 )}
-            <div className={styles.rebus}>
+            <div onClick={()=> props.firstRebus(props.rebus)} className={styles.rebus}>
                 <img src={props.src} alt={props.id} />
 
             </div>

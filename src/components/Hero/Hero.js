@@ -17,10 +17,12 @@ const Hero = () => {
                         <Slider
                             {...context.rebus}
                             {...context} />
+                        </div>
+
                         <SliderMiniature {...context}/>
 
                         <button className={styles.btn} type='button' onClick={()=> context.firstRebus(context.rebus)}>rozwiąż ten rebus</button>
-                    </div>
+
                 </header>
             )}
         </AppContext.Consumer>

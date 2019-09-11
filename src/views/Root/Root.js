@@ -216,7 +216,7 @@ class Root extends React.Component {
                 this.setState(prevState => ({
                     addLetter: item,
                     buttonClick: prevState.buttonClick + 1,
-                }), ()=> this.getHint())
+                }), () => this.getHint())
 
             }
         })
@@ -245,39 +245,43 @@ class Root extends React.Component {
             miniSlider: this.miniSlider,
         }
 
-        return (<AppContex.Provider value={context} >
-            <BrowserRouter >
-                <Menu onCloseRebus={this.closeRebus} />
+        return (
 
-                <AnimatedSwitch
-                    atEnter={{ opacity: 0 }}
-                    atLeave={{ opacity: 0 }}
-                    atActive={{ opacity: 1 }} >
-                    {isOpenRebus &&
-                        <ImagesModal {...rebus} {...this.state}
-                            onHandleChange={this.handleChange}
-                            checkAnswer={this.checkAnswer}
-                            handleNextRebus={this.handleNextRebus}
-                            handlePrevRebus={this.handlePrevRebus}
-                            onOpenNotes={this.onOpenNotes}
-                            onMouseDown={this.onMouseDown}
-                            closeRebus={this.closeRebus}
-                            inputs={this.inputs}
-                            clearInputs={this.clearInputs}
-                            hint={this.hint}
-                            repeat={this.repeat}
-                        />
-                    }
-                    <Route exact path='/'
-                        component={Hero}
-                        {...this.state}
-                    />
-                    <Route exact path='/gallery' component={GalleryView} />
-                    <Route exact path='/contact' component={ContactView} />
-                </AnimatedSwitch>
-            </BrowserRouter>
+                <AppContex.Provider value={context} >
+                    <BrowserRouter >
+                        <Menu onCloseRebus={this.closeRebus} />
 
-        </AppContex.Provider>
+                        <AnimatedSwitch
+                            atEnter={{ opacity: 0 }}
+                            atLeave={{ opacity: 0 }}
+                            atActive={{ opacity: 1 }} >
+                            {isOpenRebus &&
+                                <ImagesModal {...rebus} {...this.state}
+                                    onHandleChange={this.handleChange}
+                                    checkAnswer={this.checkAnswer}
+                                    handleNextRebus={this.handleNextRebus}
+                                    handlePrevRebus={this.handlePrevRebus}
+                                    onOpenNotes={this.onOpenNotes}
+                                    onMouseDown={this.onMouseDown}
+                                    closeRebus={this.closeRebus}
+                                    inputs={this.inputs}
+                                    clearInputs={this.clearInputs}
+                                    hint={this.hint}
+                                    firstRebus={this.firstRebus}
+                                />
+                            }
+                            <Route exact path='/'
+                                component={Hero}
+                                {...this.state}
+                            />
+                            <Route exact path='/gallery' component={GalleryView} />
+                            <Route exact path='/contact' component={ContactView} />
+                        </AnimatedSwitch>
+                    </BrowserRouter>
+
+                </AppContex.Provider>
+
+
         );
     }
 }

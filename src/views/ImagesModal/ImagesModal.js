@@ -13,15 +13,27 @@ import Input from '../../components/Input/Input';
 
 
 class ImagesModal extends React.Component {
+    state = {
+        isModal: false
+    }
+
+    firstRebus = () => {
+        this.setState({
+            isModal: true,
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            isModal: false,
+        })
+    }
 
     render() {
+
         const {
             id,
             onOpenNotes,
             closeRebus,
-            isRightAnswer,
-            name,
-            value,
         } = this.props
 
 
@@ -29,6 +41,9 @@ class ImagesModal extends React.Component {
 
         return (
             <div className={styles.container}>
+                {this.state.isModal && <div className={styles.modal} onClick={() => this.closeModal()} >
+                    <img src={this.props.src} alt={this.props.id} />
+                </div>}
                 <Notes {...this.props} />
 
                 <div className={styles.notes} onClick={onOpenNotes}><NoteAddSharpIcon className={styles.add_note} /></div>
@@ -43,7 +58,7 @@ class ImagesModal extends React.Component {
                         {/* {( isRightAnswer ) ? <p className={styles.title}>{name}</p> : null} */}
                         <p className={styles.title_hash}>#{id}</p>
                         <CancelIcon className={styles.close} onClick={closeRebus}>X</CancelIcon>
-                        <Slider {...this.props} />
+                        <Slider {...this.props} firstRebus={this.firstRebus} />
                         <Input {...this.props} />
 
                     </div>
