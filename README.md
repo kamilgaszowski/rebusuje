@@ -16,6 +16,7 @@ If you see any bugs, have an idea for new features, or think that existing featu
 Project is created with:
 * React 16.8
 * React-router-dom
+* CSS Modules with a little bit SASS
 * Context API
 * Icons from Material UI
 * Deployed on Netlify
