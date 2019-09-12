@@ -1,7 +1,6 @@
 # Rebusuje 
 ## Probably the best rebus site on the internet
 
-[rebusuje.pl](www.rebusuje.pl)
 
 ## Info
 
