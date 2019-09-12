@@ -22,7 +22,9 @@ Project is created with:
 * Deployed on Netlify
 
 
+## Note
 
+The site is still under construction!
 
 ## Setup
 
