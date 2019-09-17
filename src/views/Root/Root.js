@@ -12,7 +12,6 @@ import GalleryView from '../GalleryView/GalleryView';
 import ContactView from '../ContactView/ContactView'
 import ImagesModal from '../ImagesModal/ImagesModal';
 import Hero from '../../components/Hero/Hero';
-import { number } from 'prop-types';
 
 
 class Root extends React.Component {
@@ -111,7 +110,7 @@ class Root extends React.Component {
     }
 
     handleNextRebus = () => {
-        
+
         this.getDataFromRebus()
         this.state.isOpenRebus && this.clearInputs();
         this.setState({

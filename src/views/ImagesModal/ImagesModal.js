@@ -40,31 +40,31 @@ class ImagesModal extends React.Component {
 
 
         return (
-                    <div className={styles.container}>
-                        {this.state.isModal && <div className={styles.modal} onClick={() => this.closeModal()} >
-                            <img src={this.props.src} alt={this.props.id} />
-                        </div>}
-                        <Notes {...this.props} />
+            <div className={styles.container}>
+                {this.state.isModal && <div className={styles.modal} onClick={() => this.closeModal()} >
+                    <img src={this.props.src} alt={this.props.id} />
+                </div>}
+                <Notes {...this.props} />
 
-                        <div className={styles.notes} onClick={onOpenNotes}><NoteAddSharpIcon className={styles.add_note} /></div>
+                <div className={styles.notes} onClick={onOpenNotes}><NoteAddSharpIcon className={styles.add_note} /></div>
 
-                        <div className={styles.wrapper}>
-                            <div className={styles.border}>
+                <div className={styles.wrapper}>
+                    <div className={styles.border}>
 
-                                <HelpIcon className={styles.question} onClick={() => this.props.hint()}>podpowiedź</HelpIcon>
+                        <HelpIcon className={styles.question} onClick={() => this.props.hint()}>podpowiedź</HelpIcon>
 
-                                {this.props.checkAnswer && <p className={styles.title}>{this.props.answer}</p>}
+                        {this.props.checkAnswer && <p className={styles.title}>{this.props.answer}</p>}
 
-                                {/* {( isRightAnswer ) ? <p className={styles.title}>{name}</p> : null} */}
-                                <p className={styles.title_hash}>#{id}</p>
-                                <CancelIcon className={styles.close} onClick={closeRebus}>X</CancelIcon>
-                                <Slider {...this.props} firstRebus={this.firstRebus} />
-                                <Input {...this.props} />
-
-                            </div>
-                        </div>
+                        {/* {( isRightAnswer ) ? <p className={styles.title}>{name}</p> : null} */}
+                        <p className={styles.title_hash}>#{id}</p>
+                        <CancelIcon className={styles.close} onClick={closeRebus}>X</CancelIcon>
+                        <Slider {...this.props} firstRebus={this.firstRebus} />
+                        <Input {...this.props} />
 
                     </div>
+                </div>
+
+            </div>
 
         )
     }

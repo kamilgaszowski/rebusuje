@@ -25,7 +25,6 @@ const Slider = ({ ...props }) => {
                 )}
             <div onClick={()=> props.firstRebus(props.rebus)} className={styles.rebus}>
                 <img src={props.src} alt={props.id} />
-
             </div>
         </div >
     )
