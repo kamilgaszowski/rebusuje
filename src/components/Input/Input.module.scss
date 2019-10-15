@@ -7,35 +7,13 @@
     align-items: center;
     flex-wrap: wrap;
 
-    .check {
 
-      position: absolute;
-      bottom: 60px;
-      right: -100px;
-
-
-      .icon {
-        margin: 10px;
-        opacity: 1;
-        color: transparent;
-        width: 40px;
-        height: 40px;
-        transition: color 0.5s linear;
-      }
-      .right {
-        @extend .icon;
-        color: #51cc51;
-      }
-
-      .wrong {
-        @extend .icon;
-        color: #c74040;
-      }
-    }
   }
   .inputs {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+
   }
   .input {
     margin: 20px 5px 5px;
@@ -44,6 +22,7 @@
     border: none;
     border-bottom: 0.5px solid #000;
     box-shadow: none;
+    border-radius: 0;
     background: rgba(252, 252, 252, 0.1);
     text-align: center;
     font-size: 1rem;
@@ -90,9 +69,44 @@
     }
   }
 
-  .clear {
-    position: absolute;
-    bottom: 80px;
-    right: -30px;
-    cursor: pointer;
+
+
+  .buttons_wrapper {
+    position: relative;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .clear {
+      // // position: absolute;
+      // bottom: 80px;
+      // right: -30px;
+      cursor: pointer;
+    }
+
+    .check {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .icon {
+        // margin: 10px;
+        opacity: 1;
+        color: transparent;
+        width: 30px;
+        height: 30px;
+        transition: color 0.5s linear;
+      }
+      .right {
+        @extend .icon;
+        color: #51cc51;
+      }
+
+      .wrong {
+        @extend .icon;
+        color: #c74040;
+      }
+    }
   }

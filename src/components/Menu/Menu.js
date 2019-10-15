@@ -31,7 +31,7 @@ const Menu = (props) => (
                     <NavLink
                         activeClassName={styles.active}
                         className={styles.nav_item}
-                        to="./contact"
+                        to="/contact"
                         onClick={props.onCloseRebus}>
                         <MailSharpIcon className={styles.icon} />
 

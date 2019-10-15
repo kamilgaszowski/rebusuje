@@ -17,7 +17,7 @@ const SliderMiniature = ({ items, miniSlider, miniatures, nextThumbnails, prevTh
                 ))}
 
             </div>
-            {thumbnail === 0 ? null : <button className={styles.prev_arrow} type='button' onClick={() => prevThumbnails()}><a href={`#${thumbnail}`} ><ArrowBackIosSharpIcon /></a></button>}
+            {thumbnail === 0 ? null : <button className={styles.prev_arrow} type='button' onClick={prevThumbnails}><a href={`#${thumbnail}`} ><ArrowBackIosSharpIcon /></a></button>}
             {thumbnail === items.length ? null : <button className={styles.next_arrow} type='button' onClick={() => nextThumbnails()}><a href={`#${thumbnail}`}><ArrowForwardIosSharpIcon /></a></button>}
 
 
