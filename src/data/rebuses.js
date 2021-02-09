@@ -22,7 +22,7 @@ export const rebuses = [
     {id: 21, name: 'nieruchomości', src: 'https://i.postimg.cc/1tLZY44J/nieruchomo-ci-20.png'},
     {id: 22, name: 'prokrastynacja', src: 'https://i.postimg.cc/MpWJLCK2/Prokrastynacja-18.png'},
     {id: 23, name: 'fotowoltaika', src: 'https://i.postimg.cc/tCjK1K6Z/Rebus-fotowoltaika-Rebusuje.png'},
-    {id: 24, name: 'margherita', src: 'https://i.postimg.cc/tCjK1K6Z/Rebus-fotowoltaika-Rebusuje.png'},
+    {id: 24, name: 'margherita', src: 'https://i.postimg.cc/wTgrxhKD/Rebus-margherita-29.png'},
     {id: 25, name: 'morsować', src: 'https://i.postimg.cc/V6X7mND7/Rebus-morsowa-27.png'},
     {id: 26, name: 'onkologia', src: 'https://i.postimg.cc/TYttRFJX/Rebus-onkologia-26.png'},
     {id: 27, name: 'pantalony', src: 'https://i.postimg.cc/kgZwSSH1/Rebus-pantalony-28.png'},
