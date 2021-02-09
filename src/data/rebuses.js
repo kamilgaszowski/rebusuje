@@ -11,4 +11,5 @@ export const rebuses = [
     {id: 10, name: 'rabarbar', src: 'https://i.postimg.cc/XYKh91Gz/10.jpg'},
     {id: 11, name: 'smartfon', src: 'https://i.postimg.cc/6QYmm7hV/11.jpg'},
     {id: 12, name: 'wolontariat', src: 'https://i.postimg.cc/bvz5g01N/12.jpg'},
+    {id: 13, name: 'misiu', src: 'https://i.postimg.cc/cHC7CLx7/125430183-114424330479564-2389246113425157991-n.png'},
 ];
